@@ -10,20 +10,19 @@ class Database {
     private $error; // error message
 
     public function __construct() {
-        // On localhost this would become
-        // $dsn = "mysql:host=127.0.0.1;port=3307;dbname=shareposts_23";
         $dsn = "mysql:host=" . $this->host .
             ";port=" . $this->port .
             ";dbname=" . $this->dbname;
         $options = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::MYSQL_ATTR_SSL_CA => openssl_get_cert_locations()['ini_cafile'],
+//            PDO::MYSQL_ATTR_SSL_CA => openssl_get_cert_locations()['ini_cafile'], // Comment for localhost phpmyadmin
+            PDO::MYSQL_ATTR_SSL_CA => URLROOT . "/certs/curl-ca-bundle.crt"
         );
 
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-            echo "<h1>Successfully connected to PlanetScale!</h1>";
+            echo "<h1>Successfully connected!</h1>";
         } catch(PDOException $e) {
             $this->error = $e->getMessage();
             die("Connection failed: " . $this->error);
