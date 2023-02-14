@@ -17,7 +17,7 @@ class Database {
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 //            PDO::MYSQL_ATTR_SSL_CA => openssl_get_cert_locations()['ini_cafile'], // Comment for localhost phpmyadmin
-            PDO::MYSQL_ATTR_SSL_CA => URLROOT . "/certs/curl-ca-bundle.crt"
+            PDO::MYSQL_ATTR_SSL_CA => URLROOT . "/certs/curl-ca-bundle.crt",
         );
 
         try {
