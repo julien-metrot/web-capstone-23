@@ -1,6 +1,6 @@
 <?php
 
-class Luke extends Controller {
+class Luke2 extends Controller {
     public function __construct() {
         $this->lukeModel = $this->model("Lukemodel");
     }
