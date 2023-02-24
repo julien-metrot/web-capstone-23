@@ -1,6 +1,6 @@
 <?php
 
-class Lauren extends Controller {
+class Lauren2 extends Controller {
     public function __construct() {
         $this->laurenModel =  $this->model("Laurenmodel");
     }
@@ -8,7 +8,7 @@ class Lauren extends Controller {
     public function demo() {
         $users = $this->laurenModel->getAllUsers();
         $data = [
-            "title" => "Lauren's Demo",
+            "title" => "Lauren2's Demo",
             "users" => $users
         ];
         $this->view("lauren/demo", $data);
