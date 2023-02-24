@@ -1,13 +1,14 @@
 <?php
+
 class Database {
     private $host = DB_HOST;
     private $port = DB_PORT;
     private $user = DB_USER;
     private $pass = DB_PASS;
     private $dbname = DB_NAME;
-    private $dbh; // database handler - a string containing the host, port, and database name
-    private $stmt; // SQL statement or call to stored procedure
-    private $error; // error message
+    private $dbh;
+    private $stmt;
+    private $error;
 
     public function __construct() {
         $dsn = "mysql:host=" . $this->host .
@@ -16,13 +17,11 @@ class Database {
         $options = array(
             PDO::ATTR_PERSISTENT => true,
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-//            PDO::MYSQL_ATTR_SSL_CA => openssl_get_cert_locations()['ini_cafile'], // Comment for localhost phpmyadmin
             PDO::MYSQL_ATTR_SSL_CA => APPROOT . "/libraries/certs/curl-ca-bundle.crt",
         );
 
         try {
             $this->dbh = new PDO($dsn, $this->user, $this->pass, $options);
-            echo "<h1>Successfully connected!</h1>";
         } catch(PDOException $e) {
             $this->error = $e->getMessage();
             die("Connection failed: " . $this->error);
@@ -50,6 +49,21 @@ class Database {
 
     public function execute() {
         return $this->stmt->execute();
+    }
+    
+    public function resultSet() {
+        $this->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    public function single() {
+        $this->execute();
+        return $this->stmt->fetch(PDO::FETCH_OBJ);
+    }
+    
+    public function rowCount() {
+        $this->execute();
+        return $this->stmt->fetchColumn();
     }
 
 
