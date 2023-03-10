@@ -4,7 +4,7 @@ define("APPROOT", dirname(__FILE__, 2));
 
 if($_SERVER["HTTP_HOST"] == "localhost") {
     $debug = true;
-    define("URLROOT", "http://localhost/web-capstone23/web");
+    define("URLROOT", "http://localhost/web-capstone-23/web");
 } else {
     $debug = false;
     define("URLROOT", "https://". $_SERVER["HTTP_HOST"]);
