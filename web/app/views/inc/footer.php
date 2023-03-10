@@ -1,5 +1,3 @@
-<!--/ footer-->
-<!-- Bootstrap core & Jquery -->
 <script src="<?php echo URLROOT; ?>/vendor2/jquery/jquery.min.js"></script>
 <script src="<?php echo URLROOT; ?>/vendor2/bootstrap/js/bootstrap.min.js"></script>
 <!-- Custom Js -->
