@@ -4,6 +4,7 @@
          $this->eventsModel = $this->model("Eventsmodel");
      }
      public function upcoming () {
+
          $events = $this->eventsModel->getAllEvents();
          $data = [
              "title" => "Upcoming events",
