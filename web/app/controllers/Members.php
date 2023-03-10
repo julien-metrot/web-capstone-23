@@ -2,7 +2,7 @@
 
 class Members extends Controller{
     public function __construct() {
-        $this->membersModel = $this->model("MembersModel");
+        $this->membersModel = $this->model("Membersmodel");
     }
 
     public function info() {
