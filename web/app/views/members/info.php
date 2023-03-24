@@ -45,8 +45,8 @@
                                     <ul class="social-icons text-center">
 <!--                                        <li> <a href="#"><i class="fab fa-facebook"></i></a></li>-->
 <!--                                        <li> <a href="#"><i class="fab fa-twitter"></i></a></li>-->
-                                        <li> <a href="<?php echo $member->linkedin ?>"><i class="fab fa-linkedin"></i></a></li>
-                                        <li> <a href="<?php echo $member->github ?>"><i class="fab fa-github"></i></a></li>
+                                        <li> <a href="<?php echo $member->linkedin ?>" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                        <li> <a href="<?php echo $member->github ?>" target="_blank"><i class="fab fa-github"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
