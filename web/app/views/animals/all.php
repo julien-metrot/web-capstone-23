@@ -66,9 +66,9 @@
 
         <div id="gallery-isotope" class="row row-eq-height mt-lg-5">
             <!-- Adopt 1 -->
-            <div class="cats col-lg-6">
+            <?php foreach ($data["animals"] as $animal): ?>
+            <div class="<?php?> col-lg-6">
                 <div class="isotope-item">
-                    <?php foreach ($data["animals"] as $animal): ?>
                         <div class="adopt-card res-margin row bg-light pattern2">
                             <div class="col-md-5">
                                 <!-- Image -->
@@ -138,10 +138,10 @@
                             <!-- /col-md -->
                         </div>
                         <!-- /adopt-card -->
-                    <?php endforeach; ?>
                 </div>
                 <!-- /isotope-item-->
             </div>
+            <?php endforeach; ?>
         </div>
     </div>
     <!-- /gallery-isotope-->
