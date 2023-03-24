@@ -31,7 +31,6 @@
 <body>
 
 <?php require_once(APPROOT . "/views/inc/top-bar.php") ?>
-=======
 <!-- Preloader  -->
 <div id="preloader">
     <div class="container h-100">
