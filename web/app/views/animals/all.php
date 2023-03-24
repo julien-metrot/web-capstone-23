@@ -105,7 +105,6 @@
                                             </strong></li>
                                         <li><strong>Breed: <?php echo $animal->breed; ?></strong></li>
                                         <li><strong>Status: <?php echo $animal->status; ?></strong></li>
-                                        <li><strong>Description: <?php echo $animal->description; ?></strong></li>
                                     </ul>
                                 </div>
                             </div>
@@ -114,6 +113,7 @@
                                 <div class="text-center">
                                     <!-- Adopt info -->
                                     <ul class="adopt-card-info list-unstyled">
+                                        <strong><?php echo $animal->description; ?></strong><br>
                                         <li><i class="flaticon-veterinarian-hospital"></i>
                                             <?php
                                             $specialNeeds = ($animal->special_needs);
