@@ -10,8 +10,10 @@ class Animalsmodel {
     public function getAllAnimals() {
         $this->db->query("
             SELECT *
-            FROM animal;
+            FROM animal AS a INNER JOIN gallery_images AS g
+            WHERE a.animal_id = g.animal_id;
         ");
         return $this->db->resultSet();
     }
+
 }

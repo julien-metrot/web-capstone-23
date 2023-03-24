@@ -856,6 +856,18 @@ Last change:12th february 2022
      box-sizing: border-box;
      transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
 }
+ /*Added By Katelyn*/
+ figure.history_card {
+     height: 250px;
+     overflow: hidden;
+     text-overflow: ellipsis;
+ }
+ figure.history_card p {
+     display: -webkit-box;
+     -webkit-line-clamp: 3;
+     -webkit-box-orient: vertical;
+     overflow: hidden;
+ }
  figure.team-style3 figcaption {
      position: relative;
      margin-top:20px;
