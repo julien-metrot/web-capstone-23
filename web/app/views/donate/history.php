@@ -47,7 +47,7 @@
                                 </h4>
                             </a>
                             <h6 id="donationAmount"><?php if ($list->donation_type == "Money") {
-                                    ?> $<?php echo $list->amount;
+                                    ?> $<?php echo number_format($list->amount, 2, '.', ',');
                                 } else {
                                     echo $list->donation_type;
                                 }
