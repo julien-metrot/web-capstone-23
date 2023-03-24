@@ -54,10 +54,10 @@
                 <a class="nav-link active" href="#" data-toggle="tab" data-filter="*">All</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="tab" data-filter=".dogs">Dogs Only</a>
+                <a class="nav-link" href="#" data-toggle="tab" data-filter=".Dog">Dogs Only</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="tab" data-filter=".cats">Cats Only</a>
+                <a class="nav-link" href="#" data-toggle="tab" data-filter=".Cat">Cats Only</a>
             </li>
         </ul>
         <!-- /ul -->
@@ -67,8 +67,13 @@
         <div id="gallery-isotope" class="row row-eq-height mt-lg-5">
             <!-- Adopt 1 -->
             <?php foreach ($data["animals"] as $animal): ?>
-            <div class="<?php?> col-lg-6">
-                <div class="isotope-item">
+                <?php $type = ($animal->type); ?>
+                <div class="<?php if ($type == "Cat") {
+                    echo $type;
+                } else {
+                    echo "Dog";
+                } ?> col-lg-6">
+                    <div class="isotope-item">
                         <div class="adopt-card res-margin row bg-light pattern2">
                             <div class="col-md-5">
                                 <!-- Image -->
@@ -138,9 +143,9 @@
                             <!-- /col-md -->
                         </div>
                         <!-- /adopt-card -->
+                    </div>
+                    <!-- /isotope-item-->
                 </div>
-                <!-- /isotope-item-->
-            </div>
             <?php endforeach; ?>
         </div>
     </div>
