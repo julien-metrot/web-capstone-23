@@ -2,7 +2,6 @@
 /**
  * @var ArrayData $data
  */
-
 ?>
 <?php require_once(APPROOT . "/views/inc/header.php") ?>
 
@@ -43,7 +42,7 @@
                             <div class="card-img">
                                 <!-- image event -->
                                 <a href="#">
-                                    <img src="<?php echo URLROOT ?>/public/images/events/<?php echo $event->featured_image ?>" alt="<?php echo $event->title ?>">
+                                    <img src="<?php echo URLROOT?>/images/events/<?php echo $event->featured_image ?>" alt="<?php echo $event->title ?>
                                 </a>
                             </div>
                             <div class="card-body text-center">
@@ -52,8 +51,8 @@
                                     <h5 class="card-title"><?php echo $event->title ?></h5>
                                 </a>
                                 <ul class="list-unstyled colored-icons">
-                                    <li><span><i class="fas fa-calendar-alt mr-2"></i>2th February at 4pm</span></li>
-                                    <li><span><i class="fas fa-map-marker-alt mr-2"></i><?php echo $event->name ?></span></li>
+                                    <li><span><i class="fas fa-calendar-alt mr-2"></i><?php echo $event->date ?></span></li>
+                                    <li><span><i class="fas fa-map-marker-alt mr-2"></i><?php echo $event->address ?></span></li>
                                 </ul>
                                 <!-- button -->
                                 <a href="#" class="btn btn-primary btn-sm mt-0">More info</a>
@@ -63,11 +62,11 @@
                         <!-- /card -->
                     </div>
 <?php endforeach; ?>
-
-                </div>
                 <!-- row -->
                 <div class="col-md-12 mt-5">
                     <!-- pagination -->
+                    <nav aria-label="pagination">
+                    </nav>
                     <!-- /nav -->
                 </div>
                 <!-- /col-md -->
@@ -78,13 +77,16 @@
     </div>
     <!-- /page -->
 
-<?php require_once(APPROOT . "/views/inc/footer.php") ?>
+
+
 
 
 <?php //foreach($data["events"] as $event): ?>
 <!--    <h3>--><?php //echo $event->title ?><!--</h3>-->
 <!--      <p>Date: --><?php //echo $event->date ?><!--<br>-->
 <!--        Name: --><?php //echo $event->name ?><!--<br>-->
-<!--        Image: <br>-->
+<!--        Image: <img src="--><?php //echo URLROOT ?><!--/public/images/events/--><?php //echo $event->featured_image ?><!--" alt="--><?php //echo $event->title ?><!--" <br>-->
 <!--        Address: --><?php //echo $event->address ?><!-- <br>-->
 <!--    </p>-->
+<?php //endforeach; ?>
+<?php require_once(APPROOT . "/views/inc/footer.php") ?>
