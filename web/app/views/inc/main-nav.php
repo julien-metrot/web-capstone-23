@@ -44,6 +44,7 @@
                             <a class="dropdown-item" href="#">Login</a>
                         </div>
                     </li>
+                </ul>
                     <!--/ul -->
             </div>
             <!--collapse -->
