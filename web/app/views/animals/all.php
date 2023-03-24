@@ -4,24 +4,159 @@
  */
 ?>
 <?php require_once(APPROOT . "/views/inc/header.php") ?>
+    <!-- Jumbotron -->
+    <div class="jumbotron jumbotron-fluid" data-center="background-size: 100%;"
+         data-top-bottom="background-size: 110%;">
+        <div class="container">
+            <div class="jumbo-heading" data-aos="fade-up">
+                <h1>Adoption</h1>
+                <!-- Breadcrumbs -->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Adoption</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- /jumbo-heading -->
+    </div>
+    <!-- /jumbotron -->
+    <!-- ==== Page Content ==== -->
+    <div class="page container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h2>Adopt a Pet</h2>
+                <p class="mt-4">Welcome to our adoption page! We are thrilled that you are considering adopting
+                    one of our furry friends. Our shelter is home to a variety of animals, each with their own unique
+                    personality and story. By adopting from our shelter, you will not only gain a new companion but also
+                    make a difference in the life of an animal in need.
+                </p>
+                <p class="font-weight-bold">If you have any doubts or need more information, please <a
+                            href="/contact.html">contact us</a>
+                </p>
+            </div>
+            <!-- /col-lg -->
+            <div class="col-lg-5 card bg-light">
+                <h5>Ready for adoption</h5>
+                <ul class="checkmark pl-0 font-weight-bold">
+                    <li>All pets are neutered and vaccinated</li>
+                    <li>All pets are examined by a vet and treated as required</li>
+                    <li>We help to match you with a pet that meets your needs</li>
+                </ul>
+            </div>
+            <!-- /col-lg -->
+        </div>
 
-<?php foreach($data["animals"] as $animal):
-?>
-<div class="container">
-    <p>
-        Animal ID: <?php echo $animal->animal_id; ?><br>
-        Animal Name: <?php echo $animal->name; ?><br>
-        Breed: <?php echo $animal->breed; ?><br>
-        Type: <?php echo $animal->type; ?><br>
-        Gender: <?php echo $animal->gender; ?><br>
-        DOB: <?php echo $animal->dateofbirth; ?><br>
-        Size: <?php echo $animal->size; ?><br>
-        Status: <?php echo $animal->status; ?><br>
-        Description: <?php echo $animal->description; ?><br>
-        Special Needs: <?php echo $animal->special_needs; ?><br>
-        Friendly With Other Animals: <?php echo $animal->friendly; ?><br>
-    </p>
-</div>
-<?php endforeach; ?>
+        <!-- centered Gallery navigation -->
+        <ul class="nav nav-pills category-isotope center-nav mt-5">
+            <li class="nav-item">
+                <a class="nav-link active" href="#" data-toggle="tab" data-filter="*">All</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="tab" data-filter=".dogs">Dogs Only</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" data-toggle="tab" data-filter=".cats">Cats Only</a>
+            </li>
+        </ul>
+        <!-- /ul -->
+        <!-- Gallery -->
 
+
+        <div id="gallery-isotope" class="row row-eq-height mt-lg-5">
+            <!-- Adopt 1 -->
+            <div class="cats col-lg-6">
+                <div class="isotope-item">
+                    <?php foreach ($data["animals"] as $animal): ?>
+                        <div class="adopt-card res-margin row bg-light pattern2">
+                            <div class="col-md-5">
+                                <!-- Image -->
+                                <div class="adopt-image d-flex flex-wrap align-items-center ">
+                                    <a href="adoption-single.html">
+                                        <img src="<?php echo URLROOT; ?>/public/images/animals/<?php echo $animal->image_file; ?>"
+                                             class="img-fluid" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-7 res-margin">
+                                <!-- Name -->
+                                <div class="caption-adoption">
+                                    <h5 class="adoption-header"><a href="adoption-single.html"></a></h5>
+                                    <!-- List -->
+                                    <ul class="list-unstyled">
+                                        <h3><strong><?php echo $animal->name; ?></strong></h3>
+                                        <li><strong>Gender: <?php echo $animal->gender; ?></strong></li>
+                                        <li><strong>Age:
+                                                <?php
+                                                $birthDate = explode("-", $animal->dateofbirth);
+                                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
+                                                if ($age == 1) {
+                                                    echo $age . " year old";
+                                                } else {
+                                                    echo $age . " years old";
+                                                }
+                                                ?>
+                                            </strong></li>
+                                        <li><strong>Breed: <?php echo $animal->breed; ?></strong></li>
+                                        <li><strong>Status: <?php echo $animal->status; ?></strong></li>
+                                        <li><strong>Description: <?php echo $animal->description; ?></strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <!-- Button -->
+                                <div class="text-center">
+                                    <!-- Adopt info -->
+                                    <ul class="adopt-card-info list-unstyled">
+                                        <li><i class="flaticon-veterinarian-hospital"></i>
+                                            <?php
+                                            $specialNeeds = ($animal->special_needs);
+                                            if ($specialNeeds == "") {
+                                                echo "No Special Needs";
+                                            } else {
+                                                echo $specialNeeds;
+                                            }
+                                            ?>
+                                        </li>
+                                        <li><i class="flaticon-dog-4"></i>
+                                            <?php
+                                            $friendly = ($animal->friendly);
+                                            if ($friendly == 1) {
+                                                echo "Friendly with other pets";
+                                            } else {
+                                                echo "Not friendly with other pets";
+                                            }
+                                            ?>
+                                        </li>
+                                    </ul>
+                                    <!-- button-->
+                                    <a href="adoption-single.html" class="btn btn-primary">More Info</a>
+                                </div>
+                                <!-- /text-center -->
+                            </div>
+                            <!-- /col-md -->
+                        </div>
+                        <!-- /adopt-card -->
+                    <?php endforeach; ?>
+                </div>
+                <!-- /isotope-item-->
+            </div>
+        </div>
+    </div>
+    <!-- /gallery-isotope-->
+    <div class="col-md-12 mt-5">
+        <!-- pagination -->
+        <!--            <nav aria-label="pagination">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>-->
+        <!-- /nav -->
+    </div>
+    <!-- /col-md -->
+    <!-- /page -->
 <?php require_once(APPROOT . "/views/inc/footer.php") ?>
