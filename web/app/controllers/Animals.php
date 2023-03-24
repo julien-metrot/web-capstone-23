@@ -9,7 +9,7 @@ class Animals extends Controller{
         $animals = $this->animalsModel->getAllAnimals();
         $data = [
             "title" => "Animals",
-            "animals" => $animals
+            "animals" => $animals,
         ];
         $this->view("animals/all", $data);
     }
