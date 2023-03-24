@@ -29,6 +29,9 @@
     <link rel="icon" type="image/x-icon" href="<?php echo URLROOT; ?>/public/images/logo/updated-favicon.png">
 </head>
 <body>
+
+<?php require_once(APPROOT . "/views/inc/top-bar.php") ?>
+=======
 <!-- Preloader  -->
 <div id="preloader">
     <div class="container h-100">
@@ -50,8 +53,4 @@
     </div>
     <!--/container -->
 </div>
-<nav id="main-nav" class="navbar-expand-xl fixed-top">
 <?php require_once(APPROOT . "/views/inc/main-nav.php") ?>
-
-
-
