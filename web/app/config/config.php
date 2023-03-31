@@ -25,4 +25,4 @@ define("EMAIL_ADDRESS", "staff@pawfectadoption.com");
 define("PHONE", "(123) 456-7890");
 define("GITHUB_URL", "https://github.com/julien-metrot/web-capstone-23.git");
 define("TWITTER_URL", "https://twitter.com/kirkwoodcc");
-define("INSTAGRAM_URL", "https://www.instagram.com/kirkwoodlife/");
+define("INSTAGRAM_URL", "https://www.instagram.com/kccbizit/");
