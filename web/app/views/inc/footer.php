@@ -48,7 +48,7 @@
         <hr/>
         <div class="row">
             <div class="credits col-sm-12">
-                <p>Copyright <?php $year = date("Y"); echo $year?> / Designed by <a href="http://www.ingridkuhn.com">Ingrid Kuhn</a></p>
+                <p>Copyright <?php $year = date("Y"); echo $year?> / Designed by <a href="<?php echo URLROOT?>/members/info">the 2023 Web Capstone Team</a></p>
             </div>
         </div>
         <!--/col-lg-12-->
