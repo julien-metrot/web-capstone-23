@@ -1481,6 +1481,21 @@ Last change:12th february 2022
      border-radius: 5px;
      line-height: 1.8;
 }
+ /*Katelyn added this*/
+.frequency-select {
+    color: #D61C62;
+    border: none;
+    font-size: 1.2em;
+}
+.input-group-text {
+    color: #D61C62;
+}
+#donationDuration {
+    height: 44px;
+}
+#donationMessage {
+    margin-top: 40px;
+}
  .form-control input{
      height:50px;
 }
