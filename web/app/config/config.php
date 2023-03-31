@@ -20,3 +20,9 @@ define("DB_PASS", $_ENV['DB_PASS']);
 define("DB_NAME", $_ENV['DB_NAME']);
 
 define("SITENAME", "Pawfect Adoption");
+define("ADDRESS", "6301 Kirkwood Blvd - Cedar Rapids");
+define("EMAIL_ADDRESS", "staff@pawfectadoption.com");
+define("PHONE", "(123) 456-7890");
+define("GITHUB_URL", "https://github.com/julien-metrot/web-capstone-23.git");
+define("TWITTER_URL", "https://twitter.com/kirkwoodcc");
+define("INSTAGRAM_URL", "https://www.instagram.com/kirkwoodlife/");
