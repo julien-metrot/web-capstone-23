@@ -12,4 +12,13 @@ class Donate extends Controller {
         ];
         $this->view("donate/history", $data);
     }
+
+    public function donate() {
+//        $list = $this->donateModel->getAllDonations();
+        $data = [
+            "title" => "Donations",
+//            "list" => $list
+        ];
+        $this->view("donate/donate", $data);
+    }
 }
