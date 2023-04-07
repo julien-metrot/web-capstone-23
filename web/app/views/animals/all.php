@@ -150,18 +150,4 @@
         </div>
     </div>
     <!-- /gallery-isotope-->
-    <div class="col-md-12 mt-5">
-        <!-- pagination -->
-        <!--            <nav aria-label="pagination">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>-->
-        <!-- /nav -->
-    </div>
-    <!-- /col-md -->
-    <!-- /page -->
 <?php require_once(APPROOT . "/views/inc/footer.php") ?>
