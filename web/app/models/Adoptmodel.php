@@ -68,4 +68,15 @@ class Adoptmodel
             WHERE u.user_id = '?'
         ");
     }
+
+    public function apply($apply) {
+        $this->db->query("INSERT INTO application(employer_name, has_children, home_status, landlord_name, landlord_phone, current_pets) VALUES(:employer_name, :has_children, :home_status, :landlord_name, :landlord_phone, :current_pets)");
+        $this->db->bind(":employer_name", $apply["employerName"]);
+        $this->db->bind(":has_children", $apply["hasChildren"]);
+        $this->db->bind(":home_status", $apply["homeStatus"]);
+        $this->db->bind(":landlord_name", $apply["landlordName"]);
+        $this->db->bind(":landlord_phone", $apply["landlordName"]);
+        $this->db->bind(":current_pets", $apply["currentPets"]);
+        return $this->db->execute(); // will return true or false if the database processed the query
+    }
 }

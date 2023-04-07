@@ -27,6 +27,14 @@ Last change:12th february 2022
 
 /*=========================== General and Typography ============================ */
 
+.custom-select, .form-control, .was-validated .custom-select:invalid, .was-validated .form-control:invalid {
+    border-color: blue !important;
+}
+
+.custom-select.is-invalid, .form-control.is-invalid, .was-validated .custom-select:invalid, .was-validated .form-control:invalid {
+    border-color: red !important;
+}
+
  body {
      font-family: 'Roboto', sans-serif;
      color:#6f6f6f;
@@ -2278,6 +2286,7 @@ Last change:12th february 2022
 	 .navbar-collapse.show, .navbar-collapse {
 		 max-height: 300px !important;
 	}
+
 	 .input-group .form-control, .input-group-btn {
 		 display: inline-table;
 		 width: 100%;
