@@ -33,13 +33,13 @@
             <div class="row">
                 <div class="col-lg-5">
                     <h2>Get in Touch</h2>
-                    <span class="h7 mt-0">We offer adoption and fostering services for cats and dogs. Please feel free to reach out to us with your questions.</span>
-                    <p class="mt-2">If you're interested in adopting or fostering a pet, contact us here or fill out our application.</p>
+                    <span class="h7 mt-0">We offer adoption and fostering services for cats and dogs. Reach out to us if you have any questions.</span>
+<!--                    <p class="mt-2">If you're interested in adopting or fostering a pet, contact us here or fill out our application.</p>-->
                     <!-- contact icons-->
                     <ul class="list-unstyled mt-3 list-contact colored-icons">
-                        <li><i class="fa fa-envelope margin-icon"></i><a href="mailto:email@yoursite.com">email@yoursite.com<?php //echo EMAIL; ?></a></li>
-                        <li><i class="fa fa-phone margin-icon"></i>(123) 456-789 <?php //echo PHONE; ?></li>
-                        <li><i class="fa fa-map-marker margin-icon"></i>Pet Street 123 - New York <?php //echo ADDRESS; ?></li>
+                        <li><i class="fa fa-envelope margin-icon"></i><a href="mailto:email@yoursite.com"><?php echo EMAIL_ADDRESS; ?></a></li>
+                        <li><i class="fa fa-phone margin-icon"></i><?php echo PHONE; ?></li>
+                        <li><i class="fa fa-map-marker margin-icon"></i><?php echo ADDRESS; ?></li>
                     </ul>
                     <!-- /list-->
                 </div>
@@ -48,16 +48,16 @@
                 <div class="contact-info col-lg-6 offset-lg-1 ">
                     <h4>Send us a message</h4>
                     <!-- Form Starts -->
-                    <div id="contact_form">
+                    <form id="contact_form" method="POST" action="<?php echo URLROOT; ?>/php/sendmail.php">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label>Name<span class="required">*</span></label>
-                                    <input type="text" name="name" class="form-control input-field" required="">
+                                    <input type="text" name="user_name" class="form-control input-field" required="">
                                 </div>
                                 <div class="col-md-6">
                                     <label>Email address <span class="required">*</span></label>
-                                    <input type="email" name="email" class="form-control input-field" required="">
+                                    <input type="email" name="user_email" class="form-control input-field" required="">
                                 </div>
                             </div>
                             <div class="row">
@@ -67,7 +67,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <label>Message<span class="required">*</span></label>
-                                    <textarea name="message" id="message" class="textarea-field form-control" rows="3"  required=""></textarea>
+                                    <textarea name="msg" id="message" class="textarea-field form-control" rows="3"  required=""></textarea>
                                 </div>
                             </div>
                             <button type="submit" id="submit_btn" value="Submit" class="btn btn-primary">Send message</button>

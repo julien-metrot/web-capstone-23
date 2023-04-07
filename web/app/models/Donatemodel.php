@@ -16,6 +16,13 @@ class Donatemodel {
             LIMIT 10"
         );
         return $this->db->resultSet();
+    }
 
+    public function addNewDonation($donation_type, $amount, $anonymous, $message, $recurring) {
+        $this->db->query(
+            "INSERT INTO donations (donation_type, amount, anonymous, message, recurring)
+                VALUES(donation_type, amount, anonymous, message, recurring)"
+        );
+        return $this->db->resultSet();
     }
 }
