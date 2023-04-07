@@ -55,5 +55,57 @@
         <!-- /container -->
     </section>
     <!-- /section ends -->
+    <!-- section -->
+    <section id="call-widget" class="container-fluid pt-0 pb-0">
+        <div class="row p-0">
+            <!-- call 1 -->
+            <div class="call-box col-lg-4 p-0">
+                <a href="<?php echo URLROOT; ?>/donate/history">
+                    <!-- image -->
+                    <img src="<?php echo URLROOT; ?>/img/box1.jpg" alt="" class="center-block img-responsive">
+                    <div class="call-title">
+                        <!-- call-info -->
+                        <div class="call-info text-center">
+                            <p class="subtitle text-light">more info</p>
+                            <h3 class="text-light">Donations</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- /call-box -->
+            <!-- call 2 -->
+            <div class="call-box col-lg-4 p-0">
+                <a href="<?php echo URLROOT; ?>/events/upcoming">
+                    <!-- image -->
+                    <img src="<?php echo URLROOT; ?>/img/box2.jpg" alt="" class="center-block img-responsive">
+                    <div class="call-title">
+                        <!-- call-info -->
+                        <div class="call-info text-center">
+                            <p class="subtitle text-light">more info</p>
+                            <h3 class="text-light">Upcoming Events</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- /call-box -->
+            <!-- call 3 -->
+            <div class="call-box col-lg-4 p-0">
+                <a href="<?php echo URLROOT; ?>/members/info">
+                    <!-- image -->
+                    <img src="img/box3.jpg" alt="" class="center-block img-responsive">
+                    <div class="call-title">
+                        <!-- call-info -->
+                        <div class="call-info text-center">
+                            <p class="subtitle text-light">more info</p>
+                            <h3 class="text-light">Our Team</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <!-- /call-box -->
+        </div>
+        <!-- /row -->
+    </section>
+    <!-- /section--><!-- section -->
 
 <?php require_once(APPROOT . "/views/inc/footer.php") ?>
