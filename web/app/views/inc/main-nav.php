@@ -1,7 +1,7 @@
  <div class="navbar container-fluid">
         <div class="container ">
             <!-- logo -->
-            <a class="nav-brand" href="index.html">
+            <a class="nav-brand" href="<?php echo URLROOT; ?>">
                 <img src="<?php echo URLROOT; ?>/public/images/logo/updated-logo2.png" alt="" class="img-fluid">
             </a>
             <!-- Navbartoggler -->
@@ -14,25 +14,25 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Adopt</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/animals/all">Adopt</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Events</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/events/upcoming">Events</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Team</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/members/info">Team</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Donate</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/donate/donate">Donate</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Apply</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/adopt/applications">Apply</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/contact/info">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="contact-dropdown" data-toggle="dropdown"
@@ -40,8 +40,8 @@
                             Users
                         </a>
                         <div class="dropdown-menu pattern2" aria-labelledby="contact-dropdown">
-                            <a class="dropdown-item" href="#">Register</a>
-                            <a class="dropdown-item" href="#">Login</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/user/register">Register</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/user/login">Login</a>
                         </div>
                     </li>
                 </ul>
