@@ -255,6 +255,15 @@ jQuery(function($) {
 			})
 			// end on click
 
+			// Katelyn added this
+		   // Deselect amount buttons, if custom amount input is selected
+		   $("#custom_amount input").focus(function () {
+			   $("#donate_amount input").prop('checked', false);
+			   $("#donate_amount label").removeClass("active");
+
+		   });
+
+
 
 		}); // end document ready
 

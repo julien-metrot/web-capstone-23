@@ -38,34 +38,38 @@
                     <!-- contact-info-->
                     <div class="contact-info col-lg-9 col-sm-12 mt-2 res-margin">
                         <!-- Form Starts -->
-                        <div id="donate_form">
+                        <form id="donate_form" method="POST" action="<?php echo URLROOT; ?>/donate/donate">
+                            <input type="hidden" id="donation_type" name="donation_type" value="Money">
                             <div class="form-group">
                                 <!-- Donation Amount -->
                                 <label>Select Your Donation Amount</label>
                                 <div class="row">
-                                    <div class="col-lg-2">
-                                        <button type="button" class="list-group-item list-group-item-action btn-sm" style="border: 2px solid #D61C62;">$10</button>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <button type="button" class="list-group-item list-group-item-action btn-sm" style="border: 2px solid #D61C62;">$25</button>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <button type="button" class="list-group-item list-group-item-action btn-sm" style="border: 2px solid #D61C62;">$50</button>
-                                    </div>
-                                    <div class="col-lg-2">
-                                        <button type="button" class="list-group-item list-group-item-action btn-sm" style="border: 2px solid #D61C62;">$100</button>
-                                    </div>
-
-                                    <div class="col-lg-4" id="custom_amount">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text">$</span>
+                                    <div class="col-md-12">
+                                        <div class="input-group btn-group-toggle" id="donate_amount" data-toggle="buttons">
+                                            <label class="btn btn-amount active">
+                                                <input type="radio" name="amount" id="option1" value="10.00" checked> $10
+                                            </label>
+                                            <label class="btn btn-amount">
+                                                <input type="radio" name="amount" id="option2" value="25.00"> $25
+                                            </label>
+                                            <label class="btn btn-amount">
+                                                <input type="radio" name="amount" id="option3" value="50.00"> $50
+                                            </label>
+                                            <label class="btn btn-amount">
+                                                <input type="radio" name="amount" id="option4" value="100.00"> $100
+                                            </label>
+                                            <div id="custom_amount">
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-primary disabled" type="button">$</button>
+                                                     </span>
+                                                    <input type="number" name="custom_amount" min="0.00" step="0.01" class="form-control number" placeholder="Custom Amount" aria-label="Amount (to the nearest dollar)">
+                                                </div>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="Custom Amount" aria-label="Amount (to the nearest dollar)">
                                         </div>
                                     </div>
                                 </div>
-<!--                                <div class="row">-->
+<!--                                <div class="row mt-3">-->
 <!--                                    <div class="col-md-12">-->
 <!--                                        <label>I would like to make a-->
 <!--                                            <span><select class="frequency-select" id="exampleFormControlSelect1">-->
@@ -80,31 +84,34 @@
                                 <div class="row mt-3">
                                     <div class="col-md-6">
                                         <label>Would you like to make recurring donations?</label>
-                                            <select class="form-control" id="donationDuration">
-                                                <option>One Time Donation</option>
-                                                <option>Weekly Donation</option>
-                                                <option>Monthly Donation</option>
-                                                <option>Quarterly Donation</option>
-                                                <option>Annual Donation</option>
+                                            <select class="form-control" name="recurring" id="donationDuration">
+                                                <option value="One-time">One Time Donation</option>
+                                                <option value="Weekly">Weekly Donation</option>
+                                                <option value="Monthly">Monthly Donation</option>
+                                                <option value="Quarterly">Quarterly Donation</option>
+                                                <option value="Semiannually'">Semiannually Donation</option>
+                                                <option value="Annually">Annual Donation</option>
                                             </select>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row mt-2">
                                     <div class="col-md-12">
-<!--                                        <label>Message</label>-->
-                                        <textarea name="message" id="donationMessage" placeholder="Message" class="textarea-field form-control" rows="3"></textarea>
+                                        <label>Message</label>
+                                        <textarea name="message" id="donationMessage" placeholder="Write a message..." class="textarea-field form-control" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="row mt-4">
-                                    <div class="col-sm-6 form-check" style="margin-left:15px;">
-                                        <input class="form-check-input" type="checkbox" value="" id="anonymous">
-                                        <label class="form-check-label" style="margin-top:0px;" for="flexCheckDefault">
-                                            Donate Anonymously?
-                                        </label>
+                                    <div class="col-md-6">
+                                        <div class="form-check">
+                                            <input class="form-check-input" name="anonymous" type="checkbox" value="1" id="anonymous">
+                                            <label class="form-check-label" name="anonymous" for="flexCheckDefault">
+                                                Donate anonymously?
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
                             <!-- Divider-->
-                                <hr class="mt-5 mb-5">
+                                <hr class="mt-5 mb-4">
                                 <h4>Personal Info</h4>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -135,23 +142,26 @@
                                         <input type="text" name="address2" class="form-control input-field" placeholder="Address line 2">
                                     </div>
                                 </div>
-                                <div class="row mt-4">
+                                <div class="row">
                                     <div class="col-md-6">
-                                        <input type="email" name="city" class="form-control input-field" placeholder="City" required="">
+                                        <label>City <span class="required">*</span></label>
+                                        <input type="text" name="city" class="form-control input-field" required="">
                                     </div>
                                     <div class="col-md-2">
-                                        <input type="text" name="state" class="form-control input-field" placeholder="State" required="">
+                                        <label>State <span class="required">*</span></label>
+                                        <input type="text" name="state" class="form-control input-field" required="">
                                     </div>
                                     <div class="col-md-4">
-                                        <input type="text" name="zip" class="form-control input-field" placeholder="Zip Code" required="">
+                                        <label>Zip Code <span class="required">*</span></label>
+                                        <input type="text" name="zip" class="form-control input-field" required="">
                                     </div>
                                 </div>
-                                <button type="submit" id="submit_btn" value="Submit" class="btn mt-4 btn-primary">Donate Now</button>
+                                <button type="submit" id="donate_submit" name="donate_submit" value="Submit" class="btn mt-4 btn-primary">Donate Now</button>
                             </div>
                             <!-- /form-group-->
                             <!-- Contact results -->
-                            <div id="contact_results"></div>
-                        </div>
+                            <div id="donate_results"><?php echo $data["title"]; ?></div>
+                        </form>
                         <!-- /contact)form-->
                     </div>
                     <!-- /contact-info-->
@@ -186,7 +196,7 @@
                                         <div class="alert alert-success response" id="mce-success-response"></div>
                                     </div>
                                 </div>
-                                <!-- /mc-fiel-group -->
+                                <!-- /mc-field-group -->
                             </div>
                             <!-- /mc_embed_signup_scroll -->
                         </form>
