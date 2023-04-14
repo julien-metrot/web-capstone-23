@@ -30,10 +30,10 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <div class="card card-body bg-light">
-                <form action="<?php echo URLROOT; ?>/user/register" method="POST">
+                <form id="register_form" action="<?php echo URLROOT; ?>/user/register" method="POST">
                     <div class="form-group mb-2">
                         <label for="fullName">First Name</label>
-                        <input class="form-control <?php echo !empty($data["firstname_error"]) ? "is-invalid" : "" ?>" type="text" id="firstname" name="firstname" value="<?php echo $data["firstname"] ?>">
+                        <input class="form-control input-field <?php echo !empty($data["firstname_error"]) ? "is-invalid" : "" ?>" type="text" id="firstname" name="firstname" value="<?php echo $data["firstname"] ?>">
                         <?php if(!empty($data["firstname_error"])): ?>
                             <span class="invalid-feedback"><?php echo $data["firstname_error"] ?></span>
                         <?php endif; ?>
@@ -72,7 +72,7 @@
                     </div>
 
                     <input type="submit" class="btn btn-primary" value="Register">
-                    <a href="<?php echo URLROOT; ?>/user/login" class="btn btn-outline-primary">Have an account? Login</a>
+                    <a href="<?php echo URLROOT; ?>/user/login" class="btn btn-outline-danger">Have an account? Login</a>
 
                 </form>
             </div>

@@ -1417,7 +1417,7 @@ Last change:12th february 2022
 /* buttons */
  .btn {
      transition: all .2s ease-in-out;
-     color: #fff!important;
+     /*color: #fff!important;*/
      border:0px;
      font-size: 1rem;
      padding: 10px 50px;
@@ -1481,6 +1481,11 @@ Last change:12th february 2022
      border-radius: 5px;
      line-height: 1.8;
 }
+
+#register_form .form-control {
+    border: 1px solid #a5a5a5;
+}
+
  /* Added By Katelyn */
 #contact_form .form-control {
     border: 2px solid;
