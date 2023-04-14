@@ -82,7 +82,6 @@
                 <p class="font-weight-bold">If you have any doubts or need more information, please <a
                             href="/<?php echo URLROOT; ?>/contact/info">contact us</a>
                 </p>
-                <a href="#" class="btn btn btn-secondary mt-2">Adopt me</a>
             </div>
             <!-- /col-lg-12 -->
 
