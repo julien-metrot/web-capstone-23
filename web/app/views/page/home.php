@@ -107,7 +107,7 @@
         <!-- /row -->
     </section>
     <!-- /section--><!-- section -->
-    <div class="page container">
+
 
 
         <!--Lauren's work below-->
