@@ -17,6 +17,7 @@
                 <!-- text  -->
                 <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallax:true; parallaxlevel:2;">
                     <div class="header-text full-width text-light">
+                        <?php flash("login-success"); ?>
                         <h1>Welcome to <span><?php echo SITENAME; ?></span></h1>
                         <!--the div below is hidden on small screens  -->
                         <div class="hidden-small">
@@ -107,8 +108,6 @@
         <!-- /row -->
     </section>
     <!-- /section--><!-- section -->
-    <div class="page container">
-
 
         <!--Lauren's work below-->
         <section id="about-home" class="overlay-light">
@@ -387,7 +386,32 @@
                 <!-- /container-->
             </section>
         </section>
-    </div>
+        <!--    Julien's Work    -->
+        <!-- section -->
+        <section id="gallery-home" class="container-fluid pl-0 pr-0">
+            <div class="container">
+                <!-- section heading -->
+                <div class="section-heading text-center">
+                    <p class="subtitle">Image tour</p>
+                    <h2>Gallery</h2>
+                </div>
+                <!-- /section-heading -->
+            </div>
+            <!-- owl carousel gallery  -->
+            <div class="owl-stage owl-carousel owl-theme top-centered-nav magnific-popup mt-5">
+                <?php foreach ($data["animals"] as $animal): ?>
+                <div class="col-md-12 gallery-img hover-opacity">
+                    <!-- image -->
+                    <a href="<?php echo URLROOT; ?>/public/images/animals/<?php echo $animal->image_file; ?>" title="your caption here">
+                        <img src="<?php echo URLROOT; ?>/public/images/animals/<?php echo $animal->image_file; ?>" class="img-fluid rounded" alt="">
+                    </a>
+                </div>
+                <!-- /col-md-12 -->
+                <?php endforeach; ?>
+            </div>
+            <!-- /owl-carousel -->
+        </section>
+        <!-- /section ends -->
     <!-- /container-->
 
 

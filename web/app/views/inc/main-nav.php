@@ -40,8 +40,12 @@
                             Users
                         </a>
                         <div class="dropdown-menu pattern2" aria-labelledby="contact-dropdown">
+                            <?php if(!isLoggedIn()) { ?>
                             <a class="dropdown-item" href="<?php echo URLROOT; ?>/user/register">Register</a>
                             <a class="dropdown-item" href="<?php echo URLROOT; ?>/user/login">Login</a>
+                            <?php } else { ?>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/user/logout">Logout</a>
+                            <?php } ?>
                         </div>
                     </li>
                 </ul>

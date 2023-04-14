@@ -92,7 +92,7 @@ class User extends Controller {
                 $_SESSION["user_firstname"] = $userFromDatabase->firstname;
                 $_SESSION["user_lastname"] = $userFromDatabase->lastname;
                 $_SESSION["user_email"] = $userFromDatabase->email;
-                flash("login-success", "Good " . getTimeOfDayMessage() . ", " . $_SESSION["user_firstname"] . $_SESSION["user_lastname"] . "!");
+                flash("login-success", "Good " . getTimeOfDayMessage() . ", " . $_SESSION["user_firstname"] . " " . $_SESSION["user_lastname"] . "!");
                 redirect("/page/home");
             } else {
                 // One or both were incorrect

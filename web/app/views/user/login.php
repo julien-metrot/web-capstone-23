@@ -31,7 +31,7 @@
             <?php flash("login-fail"); ?>
             <?php flash("logout-success"); ?>
             <div class="card card-body bg-light">
-                <form action="<?php echo URLROOT; ?>/user/login" method="POST">
+                <form  id="register_form" action="<?php echo URLROOT; ?>/user/login" method="POST">
                     <div class="form-group mb-2">
                         <label for="email">Email Address</label>
                         <input class="form-control <?php echo !empty($data["email_error"]) ? "is-invalid" : "" ?>" type="text" id="email" name="email" value="<?php echo $data["email"] ?>">
@@ -49,7 +49,7 @@
                     </div>
 
                     <input type="submit" class="btn btn-primary" value="Login">
-                    <a href="<?php echo URLROOT; ?>/user/register" class="btn btn-outline-primary">Don't have an account? Register</a>
+                    <a href="<?php echo URLROOT; ?>/user/register" class="btn btn-outline-danger">Don't have an account? Register</a>
 
                 </form>
             </div>
