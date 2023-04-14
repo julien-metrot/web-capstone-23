@@ -63,7 +63,7 @@
             <div class="call-box col-lg-4 p-0">
                 <a href="<?php echo URLROOT; ?>/donate/history">
                     <!-- image -->
-                    <img src="<?php echo URLROOT; ?>/img/box1.jpg" alt="" class="center-block img-responsive">
+                    <img src="<?php echo URLROOT; ?>/img/box-1.jpg" alt="" class="center-block img-responsive">
                     <div class="call-title">
                         <!-- call-info -->
                         <div class="call-info text-center">
@@ -78,7 +78,7 @@
             <div class="call-box col-lg-4 p-0">
                 <a href="<?php echo URLROOT; ?>/events/upcoming">
                     <!-- image -->
-                    <img src="<?php echo URLROOT; ?>/img/box2.jpg" alt="" class="center-block img-responsive">
+                    <img src="<?php echo URLROOT; ?>/img/box-2.jpg" alt="" class="center-block img-responsive">
                     <div class="call-title">
                         <!-- call-info -->
                         <div class="call-info text-center">
