@@ -51,7 +51,7 @@
             <div class="row">
                 <div class="col-6">
                     <h1>All Animals</h1>
-                    <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animal/add">
+                    <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animals/add">
                         <i class="fa-solid fa-pencil"></i> Add Animal
                     </a>
                 </div>

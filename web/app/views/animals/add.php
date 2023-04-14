@@ -2,7 +2,7 @@
 <?php /** @var TYPE_NAME $data */ ?>
 <?php require APPROOT . "/views/inc/header.php"; ?>
 <div class="container">
-    <a href="<?php echo URLROOT ?>/animal" class="btn btn-primary mb-4"><i class="fa fa-arrow-left"></i> View all animals</a>
+    <a href="<?php echo URLROOT ?>/animals/all" class="btn btn-primary mb-4"><i class="fa fa-arrow-left"></i> View all animals</a>
     <div class="card card-body bg-light">
 <!--        <form action="<?php /*echo URLROOT; */?>/animal/add" method="POST">
             <div class="form-group mb-3">
