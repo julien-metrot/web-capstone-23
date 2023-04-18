@@ -14,4 +14,9 @@ class Eventsmodel {
     ");
     return $this->db->resultSet();
     }
+
+    public function addEvent($data) {
+
+
+    }
 }

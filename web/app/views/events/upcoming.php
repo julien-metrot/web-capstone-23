@@ -17,7 +17,7 @@
                 <!-- Breadcrumbs -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo URLROOT;?>/page/home">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Events</li>
                     </ol>
                 </nav>
@@ -29,6 +29,11 @@
     </div>
     <!-- /jumbotron -->
     <!-- ==== Page Content ==== -->
+    <div class="col-6">
+        <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/events/add">
+            <i class="fa-solid fa-pencil"></i> Add New Event
+        </a>
+    </div>
     <div class="page container">
         <div class="row">
             <!-- page  starts -->
@@ -57,7 +62,7 @@
                                     <li><span><i class="fas fa-map-marker-alt mr-2"></i><?php echo $event->address ?></span></li>
                                 </ul>
                                 <!-- button -->
-                                <a href="#" class="btn btn-primary btn-sm mt-0">More info</a>
+                                <a href="<?php echo URLROOT; ?>/events/event_single" class="btn btn-primary btn-sm mt-0">More info</a>
                             </div>
                             <!--/card-body text-center -->
                         </div>
