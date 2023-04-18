@@ -1417,7 +1417,7 @@ Last change:12th february 2022
 /* buttons */
  .btn {
      transition: all .2s ease-in-out;
-     color: #fff!important;
+     /*color: #fff!important;*/
      border:0px;
      font-size: 1rem;
      padding: 10px 50px;
@@ -1481,9 +1481,79 @@ Last change:12th february 2022
      border-radius: 5px;
      line-height: 1.8;
 }
- /*Katelyn added this*/
+
+#register_form .form-control {
+    border: 1px solid #a5a5a5;
+}
+
+ /* Added By Katelyn */
+#contact_form .form-control {
+    border: 2px solid;
+    color: #a5a5a5;
+}
+#contact_form .form-control:focus {
+    border: 2px solid;
+    color: #018AE0;
+}
+#donate_form .form-control {
+    border: 1px solid #a5a5a5;
+}
+/* Custom Amount Button */
+#custom_amount .input-group-btn .btn{
+    margin-top:0px;
+    height:44px;
+    margin-left: 0px;
+    border-radius: 10px 0px 0px 10px;
+    padding: 10px 15px;
+}
+#custom_amount .input-group-btn .btn:hover{
+    background-color: #007bff;
+}
+#custom_amount .input-group-btn .btn.disabled {
+    background-color: #007bff;
+    opacity: 1;
+}
+#custom_amount input.form-control {
+    border-left: 0px;
+}
+
+
+#donate_form button.donate-amt-btn {
+    border: 2px solid #007bff;
+}
+#donate_form button.donate-amt-btn:hover {
+    background-color: #007bff;
+}
+#donate_form button.donate-amt-btn:focus {
+    background-color: #007bff;
+}
+#donate_form label.form-check-label {
+    margin-top: 0px;
+}
+#donate_form label.btn-amount {
+    font-family:'Montserrat', sans-serif;
+    transition: all 0.2s ease-in-out;
+    /*margin-bottom: 4px;*/
+    margin-right: 24px;
+    margin-top: 0px;
+    border: 2px solid #007bff;
+    border-radius: 5px!important;
+    font-size: 16px;
+    color: #000!important;
+    padding: 8px 42px;
+    height: 45px;
+}
+#donate_form label.btn-amount:hover {
+    color: #fff!important;
+    background-color: #007bff;
+}
+#donate_form label.btn-amount.active {
+    background-color: #007bff;
+    color: #fff!important;
+}
+
 .frequency-select {
-    color: #D61C62;
+    color: #007bff;
     border: none;
     font-size: 1.2em;
 }
@@ -1493,9 +1563,9 @@ Last change:12th february 2022
 #donationDuration {
     height: 44px;
 }
-#donationMessage {
-    margin-top: 40px;
-}
+/*#donationMessage {*/
+/*    margin-top: 40px;*/
+/*}*/
  .form-control input{
      height:50px;
 }
