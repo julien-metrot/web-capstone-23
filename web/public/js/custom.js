@@ -283,7 +283,7 @@ jQuery(function($) {
 		   });
 
 		   //Show success/fail message for a few seconds, then have it disappear
-		   $("#alert-msg").delay(4000).fadeOut("slow");
+		   $("#alert-msg").delay(6000).fadeOut("slow");
 
 
 		}); // end document ready

@@ -39,7 +39,7 @@
                     <!--                    <p class="mt-2">If you're interested in adopting or fostering a pet, contact us here or fill out our application.</p>-->
                     <!-- contact icons-->
                     <ul class="list-unstyled mt-3 list-contact colored-icons">
-                        <li><i class="fa fa-envelope margin-icon"></i><a href="mailto:email@yoursite.com"><?php echo EMAIL_ADDRESS; ?></a></li>
+                        <li><i class="fa fa-envelope margin-icon"></i><?php echo EMAIL_ADDRESS; ?></li>
                         <li><i class="fa fa-phone margin-icon"></i><?php echo PHONE; ?></li>
                         <li><i class="fa fa-map-marker margin-icon"></i><?php echo ADDRESS; ?></li>
                     </ul>
@@ -53,7 +53,7 @@
                     } ?>
                     <h4 class="text-success">Thank you for your message!</h4>
                     <span class="h7 mt-0">We will get back to you soon.</span><br/>
-                    <a class="mt-4 btn btn-primary" href="<?php echo URLROOT; ?>/contact/info" role="button">Message Us</a>
+                    <a class="mt-4 btn btn-primary" href="<?php echo URLROOT; ?>/contact/info" role="button">Message Us Again</a>
 <!--                    <a class="mt-4 ml-2 btn btn-secondary" href="--><?php //echo URLROOT; ?><!--/contact/info" role="button">Adopt</a>-->
                     <!-- Form Starts -->
 

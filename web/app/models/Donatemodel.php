@@ -26,6 +26,14 @@ class Donatemodel {
         $this->db->bind(":anonymous", $donation["anonymous"]);
         $this->db->bind(":message", $donation["message"]);
         $this->db->bind(":recurring", $donation["recurring"]);
+
+        return $this->db->execute(); // will return true or false if the database processed the query
+    }
+
+    public function addUserDonation($userDonation) {
+        $this->db->query("INSERT INTO user_donations(donation_id, user_id) 
+                                            values(LAST_INSERT_ID(), :user_id)");
+        $this->db->bind(":user_id", $userDonation["user_id"], PDO::PARAM_INT);
         return $this->db->execute(); // will return true or false if the database processed the query
     }
 }
