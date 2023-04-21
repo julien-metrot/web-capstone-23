@@ -1,5 +1,5 @@
 <?php
-
+/*require_once '../helpers/session_helpers.php';*/
 class Animals extends Controller
 {
     public function __construct()
