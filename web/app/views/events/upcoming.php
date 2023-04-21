@@ -29,6 +29,14 @@
     </div>
     <!-- /jumbotron -->
     <!-- ==== Page Content ==== -->
+<?php
+if(!isset($_SESSION['user_id'])){
+    redirect('page/home');
+    return;
+} else {
+    $this->view("events/upcoming", $data);
+}
+?>
     <div class="col-6">
         <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/events/add">
             <i class="fa-solid fa-pencil"></i> Add New Event
@@ -49,7 +57,7 @@
                             <div class="card-img">
                                 <!-- image event -->
                                 <a href="#">
-                                    <img src="<?php echo URLROOT?>/images/events/<?php echo $event->featured_image ?>" alt="<?php echo $event->title ?>
+                                    <img src="<?php echo URLROOT?>/images/events/<?php echo $event->featured_image ?>" alt="<?php echo $event->title ?>"/>
                                 </a>
                             </div>
                             <div class="card-body text-center">
@@ -62,7 +70,7 @@
                                     <li><span><i class="fas fa-map-marker-alt mr-2"></i><?php echo $event->address ?></span></li>
                                 </ul>
                                 <!-- button -->
-                                <a href="<?php echo URLROOT; ?>/events/event_single" class="btn btn-primary btn-sm mt-0">More info</a>
+                                <a href="<?php echo URLROOT; ?>/events/event_single/<?php echo $event->event_id ?>" class="btn btn-primary btn-sm mt-0">More info</a>
                             </div>
                             <!--/card-body text-center -->
                         </div>
@@ -83,17 +91,4 @@
         <!-- /row -->
     </div>
     <!-- /page -->
-
-
-
-
-
-<?php //foreach($data["events"] as $event): ?>
-<!--    <h3>--><?php //echo $event->title ?><!--</h3>-->
-<!--      <p>Date: --><?php //echo $event->date ?><!--<br>-->
-<!--        Name: --><?php //echo $event->name ?><!--<br>-->
-<!--        Image: <img src="--><?php //echo URLROOT ?><!--/public/images/events/--><?php //echo $event->featured_image ?><!--" alt="--><?php //echo $event->title ?><!--" <br>-->
-<!--        Address: --><?php //echo $event->address ?><!-- <br>-->
-<!--    </p>-->
-<?php //endforeach; ?>
 <?php require_once(APPROOT . "/views/inc/footer.php") ?>

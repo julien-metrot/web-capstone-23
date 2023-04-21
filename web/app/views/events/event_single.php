@@ -4,7 +4,7 @@
  */
 
 ?>
-
+<?php require_once(APPROOT . "/views/inc/header.php") ?>
 <!-- Jumbotron -->
 <div class="jumbotron jumbotron-fluid" data-center="background-size: 100%;"
      data-top-bottom="background-size: 110%;">
@@ -30,13 +30,13 @@
 <!-- ==== Page Content ==== -->
 <div class="page">
     <div class="container">
-        <?php foreach($data["events"] as $event): ?>
+        <?php foreach($data["event"] as $event): ?>
         <h2><?php echo $event->title ?></h2>
         <div class="row mt-4">
             <!-- event INFO -->
             <div class="col-lg-5">
                 <!-- image event -->
-                <img class="img-fluid rounded" src="<?php echo URLROOT?>/images/events/<?php echo $event->featured_image ?>" alt=""/>
+                <img class="img-fluid rounded" src="<?php echo URLROOT?>/images/events/<?php echo $event->featured_image ?>" alt="<?php echo $event->title ?>"/>
             </div>
             <div class="col-lg-7">
                 <!-- list -->
@@ -99,3 +99,4 @@
 </div>
 <!--/container-fluid-->
 <?php endforeach; ?>
+<?php require_once(APPROOT . "/views/inc/footer.php") ?>

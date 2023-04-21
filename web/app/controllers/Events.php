@@ -4,11 +4,10 @@
          $this->eventsModel = $this->model("Eventsmodel");
      }
      public function upcoming () {
-
          $events = $this->eventsModel->getAllEvents();
          $data = [
              "title" => "Upcoming events",
-             "events" => $events
+             "events" => $events,
          ];
          $this->view("events/upcoming", $data);
      }
@@ -34,21 +33,23 @@
              if(empty($data["event_description"])) {
                  $data["event_description_error"] = "Description is required";
              }
-             if(empty($data["post_title_error"]) && empty($data["post_body_error"])) {
-                 try {
-                     if ($this->Eventsmodel->addEvent($data)) {
-                         // data successfully added
-                         flash("post_message", "Your event was created");
-                         redirect("/events/upcoming");
-                         return;
-                     }
-                 } catch (PDOException $e) {
-                     flash("post_message", "Your event could not be created. Try again later", "alert alert-danger");
-
-                 }
+             if(empty($data["event_date"])) {
+                 $data["event_date_error"] = "Date is required";
+             }
+             if(empty($data["event_address"])) {
+                 $data["event_address_error"] = "Address is required";
              }
          }
-         $this->view("events/add", $data);
+                 $this->view("events/add", $data);
+     }
+
+     public function event_single($id){
+         $event = $this->eventsModel->getsingleEvent($id);
+         $data = [
+             "title" => $event->title,
+             "event" => $event
+         ];
+         $this->view("events/event_single", $data);
      }
 
  }
