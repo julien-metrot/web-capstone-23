@@ -18,11 +18,14 @@ class Donatemodel {
         return $this->db->resultSet();
     }
 
-    public function addNewDonation($donation_type, $amount, $anonymous, $message, $recurring) {
-        $this->db->query(
-            "INSERT INTO donations (donation_type, amount, anonymous, message, recurring)
-                VALUES(donation_type, amount, anonymous, message, recurring)"
-        );
-        return $this->db->resultSet();
+    public function addNewDonation($donation) {
+        $this->db->query("INSERT INTO donations(donation_type, amount, anonymous, message, recurring) 
+                                            values(:donation_type, :amount, :anonymous, :message, :recurring)");
+        $this->db->bind(":donation_type", $donation["donation_type"]);
+        $this->db->bind(":amount", $donation["amount"]);
+        $this->db->bind(":anonymous", $donation["anonymous"]);
+        $this->db->bind(":message", $donation["message"]);
+        $this->db->bind(":recurring", $donation["recurring"]);
+        return $this->db->execute(); // will return true or false if the database processed the query
     }
 }

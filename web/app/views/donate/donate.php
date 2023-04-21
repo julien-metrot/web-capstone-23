@@ -30,6 +30,7 @@
     <div class="page">
         <div class="container-fluid block-padding">
             <div class="container">
+                <div id="alert-msg"><?php echo $data["result"]; ?> </div>
                 <h3 class="res-margin">Make a Donation</h3>
                 <!-- divider -->
                 <hr class="small-divider left"/>
@@ -47,28 +48,35 @@
                                     <div class="col-md-12">
                                         <div class="input-group btn-group-toggle" id="donate_amount" data-toggle="buttons">
                                             <label class="btn btn-amount active">
-                                                <input type="radio" name="amount" id="option1" value="10.00" checked> $10
+                                                <input type="radio" name="amount" id="option1" value="10.00" checked required> $10
                                             </label>
                                             <label class="btn btn-amount">
-                                                <input type="radio" name="amount" id="option2" value="25.00"> $25
+                                                <input type="radio" name="amount" id="option2" value="25.00" required> $25
                                             </label>
                                             <label class="btn btn-amount">
-                                                <input type="radio" name="amount" id="option3" value="50.00"> $50
+                                                <input type="radio" name="amount" id="option3" value="50.00" required> $50
                                             </label>
                                             <label class="btn btn-amount">
-                                                <input type="radio" name="amount" id="option4" value="100.00"> $100
+                                                <input type="radio" name="amount" id="option4" value="100.00" required> $100
                                             </label>
                                             <div id="custom_amount">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-primary disabled" type="button">$</button>
                                                      </span>
-                                                    <input type="number" name="custom_amount" min="0.00" step="0.01" class="form-control number" placeholder="Custom Amount" aria-label="Amount (to the nearest dollar)">
+                                                    <input type="number" name="custom_amount" min="0.01" step="0.01" required class="form-control number" placeholder="Custom Amount"
+                                                           aria-label="Amount (to the nearest dollar)">
+                                                    <?php if(!empty($data["custom_amount_error"])): ?>
+                                                        <span class="invalid-feedback"><?php echo $data["custom_amount_error"] ?></span>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <?php if(!empty($data["amount_error"])): ?>
+                                    <span class="invalid-feedback" style="display: block;"><?php echo $data["amount_error"] ?></span>
+                                <?php endif; ?>
 <!--                                <div class="row mt-3">-->
 <!--                                    <div class="col-md-12">-->
 <!--                                        <label>I would like to make a-->
@@ -84,12 +92,12 @@
                                 <div class="row mt-3">
                                     <div class="col-md-6">
                                         <label>Would you like to make recurring donations?</label>
-                                            <select class="form-control" name="recurring" id="donationDuration">
+                                            <select class="form-control <?php echo !empty($data["recurring_error"]) ? "is-invalid" : "" ?>" name="recurring" id="donationDuration">
                                                 <option value="One-time">One Time Donation</option>
                                                 <option value="Weekly">Weekly Donation</option>
                                                 <option value="Monthly">Monthly Donation</option>
                                                 <option value="Quarterly">Quarterly Donation</option>
-                                                <option value="Semiannually'">Semiannually Donation</option>
+                                                <option value="Semiannually">Semiannually Donation</option>
                                                 <option value="Annually">Annual Donation</option>
                                             </select>
                                     </div>
@@ -97,8 +105,12 @@
                                 <div class="row mt-2">
                                     <div class="col-md-12">
                                         <label>Message</label>
-                                        <textarea name="message" id="donationMessage" placeholder="Write a message..." class="textarea-field form-control" rows="3"></textarea>
+                                        <textarea name="message" id="donationMessage" placeholder="Write a message..." class="textarea-field form-control
+                                        <?php echo !empty($data["message_error"]) ? "is-invalid" : "" ?>" rows="3"></textarea>
                                     </div>
+                                    <?php if(!empty($data["message_error"])): ?>
+                                        <span class="invalid-feedback"><?php echo $data["message_error"] ?></span>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="row mt-4">
                                     <div class="col-md-6">
@@ -160,7 +172,7 @@
                             </div>
                             <!-- /form-group-->
                             <!-- Contact results -->
-                            <div id="donate_results"><?php echo $data["title"]; ?></div>
+                            <div id="donate_results"></div>
                         </form>
                         <!-- /contact)form-->
                     </div>
@@ -170,6 +182,7 @@
                 <!-- /container -->
             </div>
         </div>
+    </div>
         <!-- /page -->
 
         <!-- ==== Newsletter - call to action ==== -->

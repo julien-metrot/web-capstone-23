@@ -6,11 +6,16 @@ class Contact extends Controller {
     }
 
     public function info() {
-//        $info = $this->contactModel->getContactInfo();
         $data = [
             "title" => "Contact Info"
-//            "info" => $info
         ];
         $this->view("contact/info", $data);
+    }
+
+    public function thankyou() {
+        $data = [
+            "title" => "Contact Info"
+        ];
+        $this->view("contact/thankyou", $data);
     }
 }
