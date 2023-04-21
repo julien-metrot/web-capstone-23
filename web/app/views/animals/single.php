@@ -37,17 +37,17 @@
                     </div>
                     <!-- Name -->
                     <div class="caption-adoption col-md-8 float-right res-margin">
-                        <h2>Meet Carl</h2>
+                        <h2>Meet <?php echo $data["animals"]->name; ?></h2>
                         <!-- List -->
                         <ul class="list-unstyled mt-3">
-                            <li><strong>Gender:</strong> Male</li>
+                            <li><strong>Gender:</strong> <?php echo $data["animals"]->gender; ?></li>
                             <li><strong>Age:</strong> 1 year</li>
-                            <li><strong>Breed:</strong> unknown</li>
+                            <li><strong>Breed:</strong> <?php echo $data["animals"]->breed; ?></li>
                         </ul>
                         <!-- Adopt info -->
                         <ul class="adopt-card-info list-unstyled">
-                            <li><i class="flaticon-veterinarian-hospital"></i>Special Needs pet</li>
-                            <li><i class="flaticon-dog-4"></i>Friendly to other animals</li>
+                            <li><i class="flaticon-veterinarian-hospital"></i><?php echo $data["animals"]->special_needs; ?></li>
+                            <li><i class="flaticon-dog-4"></i><?php echo $data["animals"]->friendly; ?></li>
                         </ul>
                     </div>
                     <!-- /caption-adoption -->
