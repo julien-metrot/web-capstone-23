@@ -13,7 +13,7 @@
                 <!-- Breadcrumbs -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo URLROOT; ?>">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Adoption</li>
                     </ol>
                 </nav>
@@ -48,6 +48,14 @@
             <!-- /col-lg -->
         </div>
 
+            <div class="row">
+                <div class="col-6">
+                    <h1>All Animals</h1>
+                    <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animals/add">
+                        <i class="fa-solid fa-pencil"></i> Add Animal
+                    </a>
+                </div>
+            </div>
         <!-- centered Gallery navigation -->
         <ul class="nav nav-pills category-isotope center-nav mt-5">
             <li class="nav-item">
@@ -62,8 +70,6 @@
         </ul>
         <!-- /ul -->
         <!-- Gallery -->
-
-
         <div id="gallery-isotope" class="row row-eq-height mt-lg-5">
             <!-- Adopt 1 -->
             <?php foreach ($data["animals"] as $animal): ?>
@@ -78,7 +84,7 @@
                             <div class="col-md-5">
                                 <!-- Image -->
                                 <div class="adopt-image d-flex flex-wrap align-items-center ">
-                                    <a href="adoption-single.html">
+                                    <a href="<?php echo URLROOT; ?>/animals/single">
                                         <img src="<?php echo URLROOT; ?>/public/images/animals/<?php echo $animal->image_file; ?>"
                                              class="img-fluid" alt="">
                                     </a>
@@ -87,7 +93,8 @@
                             <div class="col-md-7 res-margin">
                                 <!-- Name -->
                                 <div class="caption-adoption">
-                                    <h5 class="adoption-header"><a href="adoption-single.html"></a></h5>
+                                    <h5 class="adoption-header"><a href="<?php echo URLROOT; ?>/animals/single"></a>
+                                    </h5>
                                     <!-- List -->
                                     <ul class="list-unstyled">
                                         <h3><strong><?php echo $animal->name; ?></strong></h3>
@@ -136,7 +143,8 @@
                                         </li>
                                     </ul>
                                     <!-- button-->
-                                    <a href="adoption-single.html" class="btn btn-primary">More Info</a>
+                                    <a href="<?php echo URLROOT; ?>/animals/single" class="btn btn-primary">More
+                                        Info</a>
                                 </div>
                                 <!-- /text-center -->
                             </div>
