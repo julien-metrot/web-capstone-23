@@ -29,6 +29,7 @@
     <div class="page">
         <!-- /bg-light-custom -->
         <div class="container block-padding">
+            <?php flash("login-success"); ?>
             <!-- Team style 3 -->
             <h3 class="text-center">Donation History</h3>
             <div class="col-md-12 carousel-3items owl-carousel owl-theme mt-5">
