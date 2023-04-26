@@ -45,7 +45,7 @@
                     <li><span><i class="fas fa-map-marker-alt mr-2"></i><?php echo $event->address ?></span></li>
                 </ul>
                 <p>
-                    Aliquam erat volutpat In id fermentum augue, ut pellentesque leo. Maecenas at arcu risus. Donec commodo sodales ex, scelerisque laoreet nibh hendrerit id. In aliquet magna nec lobortis maximus. Etiam rhoncus leo a dolor placerat, nec elementum ipsum convall.
+                    <?php echo $event->description ?>
                 </p>
                 <!-- Button -->
                 <a href="<?php echo URLROOT; ?>/contact/info" class="btn btn-primary mt-2">Contact us</a>

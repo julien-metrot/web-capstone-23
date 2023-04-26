@@ -33,7 +33,7 @@ class Eventsmodel
     public function getsingleEvent($event_id)
     {
         $this->db->query("
-    SELECT e.event_id, e.title, e.date, l.name, e.featured_image, l.address
+    SELECT e.event_id, e.title, e.date, e.description, l.name, e.featured_image, l.address
     FROM events AS e INNER JOIN locations AS l
     ON e.location_id = l.location_id
     WHERE event_id = :event_id;

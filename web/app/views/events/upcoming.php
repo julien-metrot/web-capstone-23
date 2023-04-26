@@ -29,14 +29,6 @@
     </div>
     <!-- /jumbotron -->
     <!-- ==== Page Content ==== -->
-<?php
-if(!isset($_SESSION['user_id'])){
-    redirect('page/home');
-    return;
-} else {
-    $this->view("events/upcoming", $data);
-}
-?>
     <div class="col-6">
         <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/events/add">
             <i class="fa-solid fa-pencil"></i> Add New Event

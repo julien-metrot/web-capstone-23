@@ -5,6 +5,9 @@
      }
      public function upcoming () {
          $events = $this->eventsModel->getAllEvents();
+         if(!isLoggedIn()) {
+             redirect("/user/login");
+         }
          $data = [
              "title" => "Upcoming events",
              "events" => $events,
@@ -12,6 +15,7 @@
          $this->view("events/upcoming", $data);
      }
      public function add(){
+
          $data = [
              "title" => "Add New Event",
              "event_title" => "",
@@ -47,7 +51,8 @@
          $event = $this->eventsModel->getsingleEvent($id);
          $data = [
              "title" => $event->title,
-             "event" => $event
+             "event" => $event,
+             "description" => $event->description,
          ];
          $this->view("events/event_single", $data);
      }
