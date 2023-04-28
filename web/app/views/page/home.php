@@ -108,7 +108,6 @@
         <!-- /row -->
     </section>
     <!-- /section--><!-- section -->
-
         <!--Lauren's work below-->
         <section id="about-home" class="overlay-light">
             <div class="container">
