@@ -7,6 +7,26 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // update last activity time stamp
 
+function getTimeOfDayMessage() {
+    date_default_timezone_set('America/Chicago');
+    $date = date("H");
+    if ($date >= 5 && $date < 12) {
+        return "morning";
+    }
+    if ($date >= 12 && $date < 17) {
+        return "afternoon";
+    }
+    if ($date >= 17 && $date < 22) {
+        return "evening";
+    }
+    if ($date >= 22) {
+        return "night";
+    }
+    if ($date < 5) {
+        return "night";
+    }
+}
+
 function flash($firstname, $message = "", $class = "alert alert-success") {
     if (!empty($firstname)) {
         if (!empty($message) && empty($_SESSION[$firstname])) {
