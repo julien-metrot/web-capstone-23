@@ -17,7 +17,7 @@
                 <!-- Breadcrumbs -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="<?php echo URLROOT;?>/page/home">Home</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Events</li>
                     </ol>
                 </nav>
@@ -29,6 +29,11 @@
     </div>
     <!-- /jumbotron -->
     <!-- ==== Page Content ==== -->
+    <div class="col-6">
+        <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/events/add">
+            <i class="fa-solid fa-pencil"></i> Add New Event
+        </a>
+    </div>
     <div class="page container">
         <div class="row">
             <!-- page  starts -->
@@ -44,7 +49,7 @@
                             <div class="card-img">
                                 <!-- image event -->
                                 <a href="#">
-                                    <img src="<?php echo URLROOT?>/images/events/<?php echo $event->featured_image ?>" alt="<?php echo $event->title ?>
+                                    <img src="<?php echo URLROOT?>/images/events/<?php echo $event->featured_image ?>" alt="<?php echo $event->title ?>"/>
                                 </a>
                             </div>
                             <div class="card-body text-center">
@@ -57,7 +62,7 @@
                                     <li><span><i class="fas fa-map-marker-alt mr-2"></i><?php echo $event->address ?></span></li>
                                 </ul>
                                 <!-- button -->
-                                <a href="#" class="btn btn-primary btn-sm mt-0">More info</a>
+                                <a href="<?php echo URLROOT; ?>/events/event_single/<?php echo $event->event_id ?>" class="btn btn-primary btn-sm mt-0">More info</a>
                             </div>
                             <!--/card-body text-center -->
                         </div>
@@ -78,17 +83,4 @@
         <!-- /row -->
     </div>
     <!-- /page -->
-
-
-
-
-
-<?php //foreach($data["events"] as $event): ?>
-<!--    <h3>--><?php //echo $event->title ?><!--</h3>-->
-<!--      <p>Date: --><?php //echo $event->date ?><!--<br>-->
-<!--        Name: --><?php //echo $event->name ?><!--<br>-->
-<!--        Image: <img src="--><?php //echo URLROOT ?><!--/public/images/events/--><?php //echo $event->featured_image ?><!--" alt="--><?php //echo $event->title ?><!--" <br>-->
-<!--        Address: --><?php //echo $event->address ?><!-- <br>-->
-<!--    </p>-->
-<?php //endforeach; ?>
 <?php require_once(APPROOT . "/views/inc/footer.php") ?>
