@@ -35,10 +35,10 @@ class Animals extends Controller
 
     public function add()
     {
-/*        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["admin"] != 1) {
             redirect("/animals/all");
             return;
-        }*/
+        }
         $data = [
             "title" => "Add New Animal",
             "name" => "",
@@ -105,10 +105,10 @@ class Animals extends Controller
     }
 
     public function edit($animal_id) {
-        /*        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["admin"] != 1) {
             redirect("/animals/all");
             return;
-        }*/
+        }
         $animal = $this->animalsModel->getAnimal($animal_id);
         $data = [
             "title" => "Edit Animal",
@@ -190,10 +190,10 @@ class Animals extends Controller
     }
 
     public function delete($id) {
-        /*        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["admin"] != 1) {
             redirect("/animals/all");
             return;
-        }*/
+        }
         $animals = $this->animalsModel->getAnimal($id);
         try {
             if($this->animalsModel->deleteAnimal($id)) {
