@@ -9,7 +9,7 @@
          data-top-bottom="background-size: 110%;">
         <div class="container">
             <div class="jumbo-heading" data-aos="fade-up">
-                <h1>Adoption</h1>
+                <h1>Adoption Page</h1>
                 <!-- Breadcrumbs -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
