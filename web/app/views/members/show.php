@@ -74,7 +74,7 @@
             <!--/sidebar -->
         </div>
         <!-- /row -->
-        <?php if(isset($_SESSION['user_id']) && $_SESSION['admin'] == 1): ?>
+        <?php if(isset($_SESSION['user_id']) && $_SESSION['user_admin'] == 1): ?>
         <a href="<?php echo URLROOT ?>/members/edit/<?php echo $data["member"]->user_id; ?>" class="btn btn-dark mb-4">Edit a member</a>
         <a href="<?php echo URLROOT ?>/members/delete/<?php echo $data["member"]->user_id; ?>" class="btn btn-danger mb-4">Delete a Member</a>
         <?php endif; ?>

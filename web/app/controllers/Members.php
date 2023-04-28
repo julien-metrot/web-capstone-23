@@ -29,7 +29,7 @@ class Members extends Controller
 
     public function add()
     {
-        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["user_admin"] != 1) {
             redirect("/members/info");
             return;
         }
@@ -144,7 +144,7 @@ class Members extends Controller
     public function edit($id)
     {
         $member = $this->membersModel->getMember($id);
-        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["user_admin"] != 1) {
             redirect("/members/info");
             return;
         }
@@ -218,7 +218,7 @@ class Members extends Controller
 
     public function delete($id) {
         $member = $this->membersModel->getMember($id);
-        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["user_admin"] != 1) {
             redirect("/members/info");
             return;
         }

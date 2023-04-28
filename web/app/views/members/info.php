@@ -34,7 +34,7 @@
             <div class="container mt-5">
                 <div class="row">
                     <?php flash("member_message"); ?>
-                    <?php if(isset($_SESSION['user_id']) && $_SESSION['admin'] == 1): ?>
+                    <?php if(isset($_SESSION['user_id']) && $_SESSION['user_admin'] == 1): ?>
                     <a href="<?php echo URLROOT ?>/members/add" role="button" class="btn btn-primary">Add a Member</a>
                     <?php endif; ?>
                     <!-- team carousel -->
@@ -74,21 +74,4 @@
         <!-- /container -->
     </div>
     <!-- /page -->
-<!--    --><?php //foreach ($data["members"] as $member): ?>
-<!--    <h3>--><?php //echo $member->firstname . " " . $member->lastname . ":"; ?><!--</h3>-->
-<!--    <div style="width: 35%; border-bottom-style: solid">-->
-<!--        <p>      User id: --><?php //echo $member->user_id ?><!--<br>-->
-<!--                 Avatar: <img src="--><?php //echo URLROOT ?><!--/images/members/--><?php //echo $member->avatar ?><!--" alt="--><?php //echo $member->firstname . " " . $member->lastname ?><!--"><br>-->
-<!--                 Email: --><?php //echo $member->email ?><!--<br>-->
-<!--                 LinkedIn: <a href="--><?php //echo $member->linkedin ?><!--">LinkedIn</a><br>-->
-<!--                 Github: <a href="--><?php //echo $member->github ?><!--">Github</a><br>-->
-<!--                 Dob: --><?php //echo $member->dateofbirth ?><!--<br>-->
-<!--                 Admin: --><?php //echo $member->admin ?><!--<br>-->
-<!--                 Status: --><?php //echo $member->status ?><!--<br>-->
-<!--                 Job Title: --><?php //echo $member->job_title ?><!--<br>-->
-<!--                 Job Description: --><?php //echo $member->job_description ?><!--<br>-->
-<!--                 Job Qualification: --><?php //echo $member->job_qualification; ?>
-<!--        </p>-->
-<!--    </div>-->
-<?php //endforeach; ?>
 <?php require_once(APPROOT . "/views/inc/footer.php") ?>

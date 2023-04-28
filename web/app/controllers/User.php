@@ -92,7 +92,7 @@ class User extends Controller {
                 $_SESSION["user_firstname"] = $userFromDatabase->firstname;
                 $_SESSION["user_lastname"] = $userFromDatabase->lastname;
                 $_SESSION["user_email"] = $userFromDatabase->email;
-                $_SESSION["admin"] = $userFromDatabase->admin;
+                $_SESSION["user_admin"] = $userFromDatabase->admin;
                 flash("login-success", "Good " . getTimeOfDayMessage() . ", " . $_SESSION["user_firstname"] . " " . $_SESSION["user_lastname"] . "!");
                 redirect("/page/home");
             } else {
@@ -109,6 +109,7 @@ class User extends Controller {
         unset($_SESSION["user_firstname"]);
         unset($_SESSION["user_lastname"]);
         unset($_SESSION["user_email"]);
+        unset($_SESSION["user_admin"]);
         flash("logout-success", "You have been logged out. Have a nice day!");
         redirect("/user/login");
     }
