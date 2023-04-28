@@ -33,6 +33,10 @@
             <h3 class="text-center">The Team</h3>
             <div class="container mt-5">
                 <div class="row">
+                    <?php flash("member_message"); ?>
+                    <?php if(isset($_SESSION['user_id']) && $_SESSION['admin'] == 1): ?>
+                    <a href="<?php echo URLROOT ?>/members/add" role="button" class="btn btn-primary">Add a Member</a>
+                    <?php endif; ?>
                     <!-- team carousel -->
                     <div class="col-md-12 carousel-3items owl-carousel owl-theme">
                         <!-- Team member 1 -->
@@ -51,7 +55,7 @@
                                 </div>
                             </div>
                             <!-- Team header -->
-                            <a href="team-single.html">
+                            <a href="<?php echo URLROOT ?>/members/show/<?php echo $member->user_id ?>">
                                 <h5 class="team-header"><?php echo $member->firstname . " " . $member->lastname ?></h5>
                             </a>
                             <span><?php echo $member->job_title ?></span>
