@@ -30,6 +30,7 @@
     <div class="page">
         <div class="container-fluid block-padding">
             <div class="container">
+                <div id="alert-msg"><?php echo $data["result"]; ?></div>
                 <h3 class="res-margin">Make a Donation</h3>
                 <!-- divider -->
                 <hr class="small-divider left"/>
@@ -38,7 +39,7 @@
                     <!-- contact-info-->
                     <div class="contact-info col-lg-9 col-sm-12 mt-2 res-margin">
                         <!-- Form Starts -->
-                        <form id="donate_form" method="POST" action="<?php echo URLROOT; ?>/donate/donate">
+                        <form id="donate_form" method="POST" action="<?php echo URLROOT; ?>/donate/home">
                             <input type="hidden" id="donation_type" name="donation_type" value="Money">
                             <div class="form-group">
                                 <!-- Donation Amount -->
@@ -47,40 +48,29 @@
                                     <div class="col-md-12">
                                         <div class="input-group btn-group-toggle" id="donate_amount" data-toggle="buttons">
                                             <label class="btn btn-amount active">
-                                                <input type="radio" name="amount" id="option1" value="10.00" checked> $10
+                                                <input type="radio" name="amount" id="option1" value="10.00" checked required> $10
                                             </label>
                                             <label class="btn btn-amount">
-                                                <input type="radio" name="amount" id="option2" value="25.00"> $25
+                                                <input type="radio" name="amount" id="option2" value="25.00" required> $25
                                             </label>
                                             <label class="btn btn-amount">
-                                                <input type="radio" name="amount" id="option3" value="50.00"> $50
+                                                <input type="radio" name="amount" id="option3" value="50.00" required> $50
                                             </label>
                                             <label class="btn btn-amount">
-                                                <input type="radio" name="amount" id="option4" value="100.00"> $100
+                                                <input type="radio" name="amount" id="option4" value="100.00" required> $100
                                             </label>
                                             <div id="custom_amount">
                                                 <div class="input-group">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-primary disabled" type="button">$</button>
                                                      </span>
-                                                    <input type="number" name="custom_amount" min="0.00" step="0.01" class="form-control number" placeholder="Custom Amount" aria-label="Amount (to the nearest dollar)">
+                                                    <input type="number" name="custom_amount" min="0.01" step="0.01" required class="form-control number" placeholder="Custom Amount"
+                                                           aria-label="Amount (to the nearest dollar)">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-<!--                                <div class="row mt-3">-->
-<!--                                    <div class="col-md-12">-->
-<!--                                        <label>I would like to make a-->
-<!--                                            <span><select class="frequency-select" id="exampleFormControlSelect1">-->
-<!--                                                <option>one time</option>-->
-<!--                                                <option>weekly</option>-->
-<!--                                                <option>monthly</option>]-->
-<!--                                                <option>quarterly</option>-->
-<!--                                                <option>yearly</option>-->
-<!--                                            </select></span> donation.</label>-->
-<!--                                    </div>-->
-<!--                                </div>-->
                                 <div class="row mt-3">
                                     <div class="col-md-6">
                                         <label>Would you like to make recurring donations?</label>
@@ -89,7 +79,7 @@
                                                 <option value="Weekly">Weekly Donation</option>
                                                 <option value="Monthly">Monthly Donation</option>
                                                 <option value="Quarterly">Quarterly Donation</option>
-                                                <option value="Semiannually'">Semiannually Donation</option>
+                                                <option value="Semiannually">Semiannually Donation</option>
                                                 <option value="Annually">Annual Donation</option>
                                             </select>
                                     </div>
@@ -116,17 +106,17 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>First Name<span class="required">*</span></label>
-                                        <input type="text" name="firstName" class="form-control input-field" required="">
+                                        <input type="text" name="firstname" class="form-control input-field" required="" value="<?php echo $data["firstname"] ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Last Name<span class="required">*</span></label>
-                                        <input type="text" name="lastName" class="form-control input-field" required="">
+                                        <input type="text" name="lastname" class="form-control input-field" required="" value="<?php echo $data["lastname"] ?>">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>Email address <span class="required">*</span></label>
-                                        <input type="email" name="email" class="form-control input-field" required="">
+                                        <input type="email" name="email" class="form-control input-field" required="" value="<?php echo $data["email"] ?>">
                                     </div>
                                     <div class="col-md-6">
                                         <label>Phone Number<span class="required">*</span></label>
@@ -136,31 +126,33 @@
                                 <label>Street Address <span class="required">*</span></label>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <input type="text" name="address1" class="form-control input-field" placeholder="Address line 1" required="">
+                                        <input type="text" name="address1" class="form-control input-field" placeholder="Address line 1" required=""
+                                               value="<?php echo $data["street_address_1"] ?>">
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" name="address2" class="form-control input-field" placeholder="Address line 2">
+                                        <input type="text" name="address2" class="form-control input-field" placeholder="Address line 2"
+                                               value="<?php echo $data["street_address_2"] ?>">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>City <span class="required">*</span></label>
-                                        <input type="text" name="city" class="form-control input-field" required="">
+                                        <input type="text" name="city" class="form-control input-field" required="" value="<?php echo $data["city"] ?>">
                                     </div>
                                     <div class="col-md-2">
                                         <label>State <span class="required">*</span></label>
-                                        <input type="text" name="state" class="form-control input-field" required="">
+                                        <input type="text" name="state" class="form-control input-field" required="" value="<?php echo $data["state"] ?>">
                                     </div>
                                     <div class="col-md-4">
                                         <label>Zip Code <span class="required">*</span></label>
-                                        <input type="text" name="zip" class="form-control input-field" required="">
+                                        <input type="text" name="zip" class="form-control input-field" pattern="[0-9]{5}" required="" value="<?php echo $data["zip"] ?>">
                                     </div>
                                 </div>
                                 <button type="submit" id="donate_submit" name="donate_submit" value="Submit" class="btn mt-4 btn-primary">Donate Now</button>
                             </div>
                             <!-- /form-group-->
                             <!-- Contact results -->
-                            <div id="donate_results"><?php echo $data["title"]; ?></div>
+<!--                            <div id="donate_results">--><?php //echo $data["user_id"] ?><!--</div>-->
                         </form>
                         <!-- /contact)form-->
                     </div>
@@ -170,6 +162,7 @@
                 <!-- /container -->
             </div>
         </div>
+    </div>
         <!-- /page -->
 
         <!-- ==== Newsletter - call to action ==== -->

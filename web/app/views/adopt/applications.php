@@ -61,6 +61,7 @@
             $userId = $applications->user_id;
             $appDate = $applications->application_date;
             $appStatus = $applications->application_status;
+//            $appID = $applications->application_id;
             ?>
             <div class="<?php echo strtolower($appStatus) ?> col-lg-6">
                 <div class="isotope-item">
@@ -70,7 +71,7 @@
                             <!-- Name -->
                             <div class="caption-adoption">
                                 <h5 class="adoption-header"><a
-                                            href="adoption-single.html"><?php echo $petName; ?></a></h5>
+                                            href="application_single.html"><?php echo $petName; ?></a></h5>
                                 <!-- List -->
                                 <ul class="list-unstyled">
                                     <li>
@@ -85,7 +86,7 @@
                             <!-- Button -->
                             <div class="">
                                 <!-- button-->
-                                <a href="application_single" class="btn btn-primary">More Info</a>
+                                <a href="<?php echo URLROOT; ?>/adopt/application_single/<?php echo $applications->application_id?>" class="btn btn-primary">More Info</a>
                             </div>
                             <!-- /text-center -->
                         </div>
@@ -101,33 +102,10 @@
     </div>
     <!-- /gallery-isotope-->
     <div class="col-md-12 mt-5">
-        <!-- pagination -->
-        <!--            <nav aria-label="pagination">-->
-        <!--                <ul class="pagination">-->
-        <!--                    <li class="page-item"><a class="page-link active" href="#">1</a></li>-->
-        <!--                    <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-        <!--                    <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-        <!--                    <li class="page-item"><a class="page-link" href="#">Next</a></li>-->
-        <!--                </ul>-->
-        <!--            </nav>-->
-        <!-- /nav -->
     </div>
     <!-- /col-md -->
 </div>
 <!-- /page -->
-
-<?php //foreach ($data["applications"] as $applications): ?>
-<!--    <h2>--><?php //echo $applications->firstname . " " . $applications->lastname . " ($applications->user_id)"; ?><!--</h2>-->
-<!--    <p>Interested in: --><?php //echo $applications->name . " (" . $applications->animal_id . ")"; ?><!--<br>-->
-<!--        Application status: --><?php //echo $applications->application_status; ?><!--<br>-->
-<!--        Employer Name: --><?php //echo $applications->employer_name; ?><!--<br>-->
-<!--        Does this applicant have children in their home?: --><?php //echo $applications->has_children; ?><!--<br>-->
-<!--        Does this applicant currently rent or own their home?: --><?php //echo $applications->home_status; ?><!--<br>-->
-<!--        Landlord Name: --><?php //echo $applications->landlord_name; ?><!--<br>-->
-<!--        Landlord Phone Number: --><?php //echo $applications->landlord_phone; ?><!--<br>-->
-<!--        Does this applicant currently have pets?: --><?php //echo $applications->current_pets; ?><!--<br>-->
-<!--    </p>-->
-<?php //endforeach; ?>
 
 <?php require_once(APPROOT . "/views/inc/footer.php") ?>
 

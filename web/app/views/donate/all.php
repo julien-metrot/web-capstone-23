@@ -10,12 +10,12 @@
         <div class="container" >
             <!-- jumbo-heading -->
             <div class="jumbo-heading" data-aos="fade-up">
-                <h1>History</h1>
+                <h1>Donations</h1>
                 <!-- Breadcrumbs -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Donation History</li>
+                        <li class="breadcrumb-item active" aria-current="page">All Donations</li>
                     </ol>
                 </nav>
                 <!-- /breadcrumb -->
@@ -31,38 +31,42 @@
         <div class="container block-padding">
             <?php flash("login-success"); ?>
             <!-- Team style 3 -->
-            <h3 class="text-center">Donation History</h3>
-            <div class="col-md-12 carousel-3items owl-carousel owl-theme mt-5">
-                <!-- Team member Card -->
-                <?php foreach($data["list"] as $list):?>
-                    <figure class="col-lg-12 team-style3 history_card">
-                        <!-- caption -->
-                        <figcaption>
-<!--                            <a href="team-single.html">-->
-                                <h4><?php if ($list->anonymous == 0) {
-                                        echo $list->firstname . " " . $list->lastname;
-                                    } else {
-                                        echo "Anonymous";
-                                    }
-                                    ?>
-                                </h4>
-                            </a>
-                            <h6 id="donationAmount"><?php if ($list->donation_type == "Money") {
-                                    ?> $<?php echo number_format($list->amount, 2, '.', ',');
-                                } else {
-                                    echo $list->donation_type;
-                                }
-                                ?>
-                            </h6>
-                            <p>
-                                <?php echo $list->message ?>
-                            </p>
-                        </figcaption>
-                    </figure>
-                    <!-- /figure -->
-                <?php endforeach; ?>
+            <div class="row justify-content-between mb-2 mx-1">
+                <h3 class="pt-3">All Donations</h3>
+                <a href="<?php echo URLROOT; ?>/donate/add/" class="btn btn-primary mb-3">Add Donation</a>
             </div>
-            <!-- /owl-carousel -->
+
+
+
+            <table class="table table-bordered">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Donation Type</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col"></th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <?php foreach($data["list"] as $list):?>
+                <tr>
+                    <th scope="row"><?php echo $list->donation_date ?></th>
+                    <td><?php echo $list->donation_type ?></td>
+                    <td><?php echo $list->amount ?></td>
+                    <td><?php echo $list->firstname . " " . $list->lastname ?></td>
+                    <td><div class="float-right">
+                            <a href="<?php echo URLROOT; ?>/donate/edit/<?php echo $list->donation_id; ?>" class="btn btn-primary my-lg-1 mr-2 btn-table">Edit</a>
+                            <a href="<?php echo URLROOT; ?>/donate/delete/<?php echo $list->donation_id; ?>" class="btn btn-secondary my-lg-1 btn-table">Delete</a></td>
+                        </div>
+                </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+
+
+
         </div>
         <!-- /container -->
     </div>
