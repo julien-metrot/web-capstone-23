@@ -17,12 +17,12 @@
         </div>
         <!-- /jumbo-heading -->
     </div>
-    <!-- /jumbotron -->
-    <!-- ==== Page Content ==== -->
     <div class="page container">
+        <a href="<?php echo URLROOT ?>/animals/all" class="btn btn-primary mb-4"><i class="fa fa-arrow-left"></i> View All Animals</a>
+        <?php flash("update_message"); ?>
         <div class="card card-body bg-light">
-            <h2>Add Animal</h2>
-            <form action="<?php echo URLROOT; ?>/animals/add" method="POST">
+            <h2>Edit Animal</h2>
+            <form action="<?php echo URLROOT; ?>/animals/all/<?php echo $data["animal_id"] ?>" method="POST">
                 <div class="form-group mb-3">
                     <label for="name">Animal Name: <sup>*</sup></label>
                     <input type="text" name="name" id="name"
@@ -72,14 +72,14 @@
                     <span class="invalid-feedback"><?php echo $data["description_error"]; ?></span>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="special_needs">Special Needs (If Applicable):</label>
+                    <label for="special_needs">Special Needs: <sup>*</sup></label>
                     <input type="text" name="special_needs" id="special_needs"
                            class="form-control form-control-lg <?php echo (!empty($data["special_needs_error"])) ? "is-invalid" : ""; ?>"
                            value="<?php echo $data["special_needs"]; ?>">
                     <span class="invalid-feedback"><?php echo $data["special_needs_error"]; ?></span>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="friendly">Friendly (1 = Yes, 0 = No): </label>
+                    <label for="friendly">Friendly: (1 = yes, 0 = no)<sup>*</sup></label>
                     <input type="text" name="friendly" id="friendly"
                            class="form-control form-control-lg <?php echo (!empty($data["friendly_error"])) ? "is-invalid" : ""; ?>"
                            value="<?php echo $data["friendly"]; ?>">

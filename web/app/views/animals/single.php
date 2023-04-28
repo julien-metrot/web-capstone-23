@@ -30,10 +30,11 @@
         <!-- page with sidebar starts -->
         <div class="col-lg-9 page-with-sidebar">
             <div class="row">
+                <?php if (isset($data["animals"]) && is_object($data["animals"])): ?>
                 <div class="adopt-card col-lg-12">
                     <!-- Image -->
                     <div class="col-md-4 float-left">
-                        <img src="<?php echo URLROOT; ?>/images/animals/dash1.jpg" class="img-fluid rounded" alt="">
+                        <img src="<?php echo URLROOT; ?>/public/images/animals/<?php echo $data["animals"]->image_file; ?>" class="img-fluid rounded" alt="">
                     </div>
                     <!-- Name -->
                     <div class="caption-adoption col-md-8 float-right res-margin">
@@ -41,44 +42,52 @@
                         <!-- List -->
                         <ul class="list-unstyled mt-3">
                             <li><strong>Gender:</strong> <?php echo $data["animals"]->gender; ?></li>
-                            <li><strong>Age:</strong> 1 year</li>
+                            <li><strong>Age:</strong>
+                                <?php
+                                $birthDate = explode("-", $data["animals"]->dateofbirth);
+                                $age = (date("md", date("U", mktime(0, 0, 0, $birthDate[2], $birthDate[1], $birthDate[0]))) > date("md") ? ((date("Y") - $birthDate[0]) - 1) : (date("Y") - $birthDate[0]));
+                                if ($age == 1) {
+                                    echo $age . " year old";
+                                } else {
+                                    echo $age . " years old";
+                                }
+                                ?>
+                            </li>
                             <li><strong>Breed:</strong> <?php echo $data["animals"]->breed; ?></li>
                         </ul>
                         <!-- Adopt info -->
                         <ul class="adopt-card-info list-unstyled">
-                            <li><i class="flaticon-veterinarian-hospital"></i><?php echo $data["animals"]->special_needs; ?></li>
-                            <li><i class="flaticon-dog-4"></i><?php echo $data["animals"]->friendly; ?></li>
+                            <li><i class="flaticon-veterinarian-hospital"></i>
+                                <?php
+                                $specialNeeds = ($data["animals"]->special_needs);
+                                if ($specialNeeds == "") {
+                                    echo "No Special Needs";
+                                } else {
+                                    echo $specialNeeds;
+                                }
+                                ?>
+                            </li>
+                            <li><i class="flaticon-dog-4"></i>
+                                <?php
+                                $friendly = ($data["animals"]->friendly);
+                                if ($friendly == 1) {
+                                    echo "Friendly with other pets";
+                                } else {
+                                    echo "Not friendly with other pets";
+                                }
+                                ?>
+                            </li>
                         </ul>
                     </div>
                     <!-- /caption-adoption -->
                 </div>
+                <?php endif; ?>
                 <!-- /adopt-card -->
             </div>
             <!-- /row -->
             <div class="col-lg-12">
                 <h3>About me</h3>
-                <p>Ahem, it's about time you recognized my presence. I, the one and only, am here. Yes, I'm talking
-                    about me, your sassy cat. I demand your attention, and I demand it now. Don't you dare ignore me, or
-                    you'll face the consequences.
-
-                    <br><br>
-                    Now, let me give you a quick rundown of what's acceptable and what's not. First and foremost, my
-                    food dish should always be full. None of that half-empty nonsense. And, it should be gourmet
-                    quality, none of that cheap stuff. I have a refined palate, you know.
-                    <br><br>
-                    Secondly, I require regular pampering. Brushing, petting, and scratching are a must. Don't even
-                    think about slacking off in this area, or I'll make sure you regret it.
-                    <br><br>
-                    Thirdly, I expect the highest level of cleanliness. My litter box should be pristine at all times,
-                    and my bedding should be washed regularly. I will not tolerate any messes or unpleasant odors in my
-                    domain.
-                    <br><br>
-                    Lastly, I expect to be entertained. A few toys and a scratching post won't cut it. You must engage
-                    me in playtime, or I'll take matters into my own paws and find ways to amuse myself, which may not
-                    be to your liking.
-                    <br><br>
-                    Remember, I'm the boss around here. And, if you're lucky, I may grace you with my presence and allow
-                    you to bask in my awesomeness. Just don't forget who's in charge.</p>
+                <p><?php echo $data["animals"]->description; ?></p>
                 <p class="font-weight-bold">If you have any doubts or need more information, please <a
                             href="/<?php echo URLROOT; ?>/contact/info">contact us</a>
                 </p>
@@ -168,8 +177,9 @@
         <div id="sidebar" class="bg-light h-100 col-lg-3 card pattern3 ">
             <div class="widget-area">
                 <h5 class="sidebar-header">Adoption events</h5>
+                <p>Check out our events page for more details!</p>
                 <!-- event 1 -->
-                <?php foreach ($data["events"] as $event): ?>
+                <?php foreach ($data["events"] as $events): ?>
                     <div class="widget2">
                         <div class="card">
                             <div class="card-img">
@@ -182,25 +192,21 @@
                             <div class="card-body">
                                 <!-- event info -->
                                 <a href="event-single.html">
-                                    <h6 class="card-title"><?php echo $event->title ?></h6>
+                                    <h6 class="card-title"><?php echo $events->title ?></h6>
                                 </a>
                                 <!-- list -->
                                 <ul class="list-inline colored-icons">
                                     <li class="list-inline-item"><span><i class="fas fa-calendar-alt mr-2"></i>
-                                        <?php
-                                        $date = $event->date;
-                                        $reformat = date("F j, Y", strtotime($date));
-                                        echo $reformat;
-                                        ?></span>
+                            <?php
+                            $date = $events->date;
+                            $reformat = date("F j, Y", strtotime($date));
+                            echo $reformat;
+                            ?></span>
                                     </li>
                                     <li class="list-inline-item"><span><i
-                                                    class="fas fa-map-marker-alt mr-2"></i><?php echo $event->address ?></span>
+                                                    class="fas fa-map-marker-alt mr-2"></i><?php echo $events->address ?></span>
                                     </li>
                                 </ul>
-                                <!-- button -->
-                                <div class="text-center">
-                                    <a href="event-single.html" class="btn btn-primary  btn-sm mt-0">More info</a>
-                                </div>
                             </div>
                             <!--/card-body -->
                         </div>
@@ -214,48 +220,4 @@
     </div>
     <!-- /row -->
 </div>
-<!-- /page -->
-<!-- ==== Newsletter - call to action ==== -->
-<div class="container-fluid footer-bg block-padding overlay">
-    <div class="container">
-        <div class="col-lg-5 text-light text-center">
-            <h4>Subscribe to our newsletter</h4>
-            <p>We send e-mails once a month, we never send Spam!</p>
-            <!-- Form -->
-            <div id="mc_embed_signup">
-                <!-- your form address in the line bellow -->
-                <form action="//yourlist.us12.list-manage.com/subscribe/post?u=04e646927a196552aaee78a7b&id=111"
-                      method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                      target="_blank" novalidate>
-                    <div id="mc_embed_signup_scroll">
-                        <div class="mc-field-group">
-                            <div class="input-group">
-                                <input class="form-control border2 input-lg required email" type="email" value=""
-                                       name="EMAIL" placeholder="Your email here" id="mce-EMAIL">
-                                <span class="input-group-btn">
-                              <button class="btn btn-primary btn-sm" type="submit" value="Subscribe" name="subscribe"
-                                      id="mc-embedded-subscribe">Subscribe</button>
-                              </span>
-                            </div>
-                            <!-- Subscription results -->
-                            <div id="mce-responses" class="mailchimp">
-                                <div class="alert alert-danger response" id="mce-error-response"></div>
-                                <div class="alert alert-success response" id="mce-success-response"></div>
-                            </div>
-                        </div>
-                        <!-- /mc-fiel-group -->
-                    </div>
-                    <!-- /mc_embed_signup_scroll -->
-                </form>
-                <!-- /form ends -->
-            </div>
-            <!-- /mc_embed_signup -->
-        </div>
-        <!--/ col-lg-->
-    </div>
-    <!--/ container-->
-</div>
-<!--/container-fluid-->
-
-
 <?php require_once(APPROOT . "/views/inc/footer.php") ?>
