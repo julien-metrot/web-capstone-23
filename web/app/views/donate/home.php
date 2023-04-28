@@ -39,7 +39,7 @@
                     <!-- contact-info-->
                     <div class="contact-info col-lg-9 col-sm-12 mt-2 res-margin">
                         <!-- Form Starts -->
-                        <form id="donate_form" method="POST" action="<?php echo URLROOT; ?>/donate/donate">
+                        <form id="donate_form" method="POST" action="<?php echo URLROOT; ?>/donate/home">
                             <input type="hidden" id="donation_type" name="donation_type" value="Money">
                             <div class="form-group">
                                 <!-- Donation Amount -->

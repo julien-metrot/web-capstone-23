@@ -282,6 +282,27 @@ jQuery(function($) {
 			   }
 		   });
 
+		   //Upon load (pre-population), if money is not selected, remove the required attribute for the amount
+		   if ($('#money_type').is(':checked')) {
+			   $("#donate_amount input[name='amount']").prop('required', true);
+			   $("#custom_amount input").prop('required', false);
+		   } else {
+			   $("#donate_amount input[name='amount']").prop('required', false);
+			   $("#custom_amount input").prop('required', false);
+		   }
+
+		   //Only show amount section when donation type "Money" is selected.
+			$("#money").click(function() {
+				$("#amount_section").slideDown();
+				$("#donate_amount input[name='amount']").prop('required', true);
+				$("#custom_amount input").prop('required', true);
+			});
+		   $("#food,#supplies,#service,#other_donation").click(function() {
+			   $("#amount_section").slideUp();
+			   $("#donate_amount input[name='amount']").prop('required', false);
+			   $("#custom_amount input").prop('required', false);
+		   });
+
 		   //Show success/fail message for a few seconds, then have it disappear
 		   $("#alert-msg").delay(6000).fadeOut("slow");
 
