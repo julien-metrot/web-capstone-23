@@ -35,7 +35,7 @@ class Animals extends Controller
 
     public function add()
     {
-        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["user_admin"] || !isLoggedIn()) {
             redirect("/animals/all");
             return;
         }
@@ -105,7 +105,7 @@ class Animals extends Controller
     }
 
     public function edit($animal_id) {
-        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["user_admin"] || !isLoggedIn()) {
             redirect("/animals/all");
             return;
         }
@@ -190,7 +190,7 @@ class Animals extends Controller
     }
 
     public function delete($id) {
-        if ($_SESSION["admin"] != 1) {
+        if ($_SESSION["user_admin"] || !isLoggedIn()) {
             redirect("/animals/all");
             return;
         }
