@@ -28,9 +28,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo URLROOT; ?>/donate/donate">Donate</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?php echo URLROOT; ?>/adopt/applications">Apply</a>
+
+                    <?php  if(!empty($_SESSION["user_admin"]) && $_SESSION["user_admin"] == 1 ): ?>
+                       <li class="nav-item">
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/adopt/applications">View Applications</a>
                     </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo URLROOT; ?>/contact/info">Contact</a>
                     </li>

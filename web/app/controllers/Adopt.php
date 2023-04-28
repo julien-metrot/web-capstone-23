@@ -59,6 +59,7 @@ class Adopt extends Controller
 
     public function apply()
     {
+
         $data = [
             "title" => "Apply for Adoption",
             // Include default values for form inputs
@@ -74,6 +75,13 @@ class Adopt extends Controller
             "referencePhone" => "",
             "referenceRelationship" => "",
         ];
+
+        if (isLoggedIn()) {
+            //pre-populate values in the form for logged-in users
+            $data["fullName"] = $_SESSION["user_firstname"] . " " . $_SESSION["user_lastname"];
+            $data["email"] = $_SESSION["user_email"];
+//            $data["user_id"] = $_SESSION["user_id"];
+        }
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // The user submitted the application form
 
