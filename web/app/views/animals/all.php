@@ -52,6 +52,8 @@
                 <div class="col-6">
                     <h1>All Animals</h1>
                     <?php flash("animal_message");?>
+                    <?php flash("update_message"); ?>
+                    <?php flash("delete_message"); ?>
                     <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animals/add">
                         <i class="fa-solid fa-pencil"></i> Add Animal
                     </a>
@@ -144,8 +146,14 @@
                                         </li>
                                     </ul>
                                     <!-- button-->
-                                    <a href="<?php echo URLROOT; ?>/animals/single" class="btn btn-primary">More
-                                        Info</a>
+                                    <a href="<?php echo URLROOT; ?>/animals/single/<?php echo $animal->animal_id ?>" class="btn btn-primary">More
+                                        Info</a><br><br>
+                                        <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animals/edit/<?php echo $animal->animal_id; ?>">
+                                            <i class="fa-solid fa-pencil"></i> Edit Animal
+                                        </a>
+                                    <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animals/delete/<?php echo $animal->animal_id; ?>">
+                                        <i class="fa-solid fa-pencil"></i> Delete Animal
+                                    </a>
                                 </div>
                                 <!-- /text-center -->
                             </div>
