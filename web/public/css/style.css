@@ -1503,8 +1503,8 @@ Last change:12th february 2022
     border: 2px solid;
     color: #018AE0;
 }
-#donate_form .form-control {
-    border: 1px solid #a5a5a5;
+#donate_form .form-control, #add_donation .form-control {
+    border: 1px solid #a5a5a5 !important;
 }
 /* Custom Amount Button */
 #custom_amount .input-group-btn .btn{
@@ -1525,20 +1525,10 @@ Last change:12th february 2022
     border-left: 0px;
 }
 
-
-#donate_form button.donate-amt-btn {
-    border: 2px solid #007bff;
-}
-#donate_form button.donate-amt-btn:hover {
-    background-color: #007bff;
-}
-#donate_form button.donate-amt-btn:focus {
-    background-color: #007bff;
-}
-#donate_form label.form-check-label {
+#donate_form label.form-check-label, #add_donation label.form-check-label {
     margin-top: 0px;
 }
-#donate_form label.btn-amount {
+#donate_form label.btn-amount, #add_donation label.btn-amount {
     font-family:'Montserrat', sans-serif;
     transition: all 0.2s ease-in-out;
     /*margin-bottom: 4px;*/
@@ -1551,15 +1541,40 @@ Last change:12th february 2022
     padding: 8px 42px;
     height: 45px;
 }
-#donate_form label.btn-amount:hover {
+#donate_form label.btn-amount:hover, #add_donation label.btn-amount:hover {
     color: #fff!important;
     background-color: #007bff;
 }
-#donate_form label.btn-amount.active {
+#donate_form label.btn-amount.active, #add_donation label.btn-amount.active {
     background-color: #007bff;
     color: #fff!important;
 }
-
+#add_donation label.btn-type {
+    font-family:'Montserrat', sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+    transition: all 0.2s ease-in-out;
+    /*margin-bottom: 4px;*/
+    margin-right: 25px;
+    margin-top: 0px;
+    border: 2px solid #007bff;
+    border-radius: 5px!important;
+    font-size: 16px;
+    color: #000!important;
+    padding: 8px 30px;
+    height: 45px;
+}
+#add_donation label.btn-type:hover {
+    color: #fff!important;
+    background-color: #007bff;
+}
+#add_donation label.btn-type.active {
+    background-color: #007bff;
+    color: #fff!important;
+}
+#amount_section {
+    display: none;
+}
 .frequency-select {
     color: #007bff;
     border: none;
@@ -1571,9 +1586,10 @@ Last change:12th february 2022
 #donationDuration {
     height: 44px;
 }
-/*#donationMessage {*/
-/*    margin-top: 40px;*/
-/*}*/
+.btn.btn-table {
+    padding: 8px 30px;
+    border-radius: 2px 2px;
+}
  .form-control input{
      height:50px;
 }

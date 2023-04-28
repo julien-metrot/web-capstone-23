@@ -6,7 +6,7 @@ class Donate extends Controller {
     }
 
     public function history() {
-        $list = $this->donateModel->getAllDonations();
+        $list = $this->donateModel->getDonationHistory();
         $data = [
             "title" => "Donations",
             "list" => $list
@@ -19,26 +19,10 @@ class Donate extends Controller {
         $data = [
             "title" => "Make a Donation",
             // Include default values for form inputs
-            "donation_type" => "",
-            "amount" => "",
-            "anonymous" => "",
-            "message" => "",
-            "recurring" => "",
-            "result" => "",
-            "firstname" => "",
-            "lastname" => "",
-            "email" => "",
-            "phoneNumber" => "",
-            "password" => "Password123",
-            "user_id" => 0,
-            "street_address_1" => "",
-            "street_address_2" => "",
-            "state" => "",
-            "city" => "",
-            "zip" => "",
-            "current_address" => 0,
-            "error" => false,
-            "error_msg" => "Something went wrong."
+            "donation_type" => "", "amount" => "", "anonymous" => "", "message" => "", "recurring" => "",
+            "user_id" => 0, "firstname" => "", "lastname" => "", "email" => "", "phoneNumber" => "", "password" => "Password123",
+            "street_address_1" => "", "street_address_2" => "", "state" => "", "city" => "", "zip" => "", "current_address" => 0,
+            "result" => "", "error" => false, "error_msg" => "Something went wrong."
         ];
 
 
@@ -66,13 +50,40 @@ class Donate extends Controller {
 
         if($_SERVER["REQUEST_METHOD"] == "POST")
         {
-            //get and validate donation type
-            $data["donation_type"] = $_POST["donation_type"];
-            if($data["donation_type"] == "") {
-                $data["error"] = true;
-                $data["error_msg"] = "Invalid Data Type";
+            //if the user isn't logged in, add them to the database
+            if (!isLoggedIn()) {
+                $data["user_id"] = $this->saveUserInfo($data);
             }
-            //get and validate donation amount
+
+            //If the address is new/different from current, add it to the database
+            if ($data["street_address_1"] != $_POST["address1"]) {
+                $this->addNewUserAddress($data);
+            }
+
+            //Add the donation and user donation
+            if ($this->addDonation($data)) {
+                flash("login-success", "Thank you for your donation!", "alert alert-success fade show");
+                redirect("/donate/history");
+            } else {
+                $data["error_msg"] = "Something went wrong. Please try again.";
+                $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
+            }
+        }
+
+        $this->view("donate/home", $data);
+    }
+
+    public function addDonation($data) {
+
+        //get and validate donation type
+        $data["donation_type"] = $_POST["donation_type"];
+        if($data["donation_type"] == "") {
+            $data["error"] = true;
+            $data["error_msg"] = "Invalid Data Type";
+        }
+        //get and validate donation amount
+        //only if donation type is Money
+        if ($data["donation_type"] == "Money") {
             if (empty($_POST["amount"]) && empty($_POST["custom_amount"])) {
                 $data["error"] = true;
                 $data["error_msg"] = "Please select an amount.";
@@ -87,6 +98,200 @@ class Donate extends Controller {
                     $data["error_msg"] = "Invalid Amount";
                 }
             }
+        } else {
+            $data["amount"] = null;
+        }
+
+        //get and validate anonymous
+        $data["anonymous"] = (!empty($_POST['anonymous'])) ? 1 : 0;
+        if($data["anonymous"] == "") {
+            $data["error"] = true;
+        }
+        //get and validate recurring
+        $data["recurring"] = $_POST["recurring"];
+        if($data["recurring"] == "") {
+            $data["error"] = true;
+        }
+        //get and validate message
+        $data["message"] = filter_var($_POST["message"], FILTER_SANITIZE_STRING);
+        if (!empty($data["message"])) {
+            if(!filter_var($data["message"], FILTER_SANITIZE_STRING)) {
+                $data["error"] = true;
+                $data["error_msg"] = "Invalid characters";
+            }
+        }
+
+        //this adds the donation, and outputs success message if successful
+        if (!$data["error"] && $data["user_id"] != 0) {
+            if ($this->donateModel->addNewDonation($data)) {
+                //will run if the donation is added to the database
+                if ($this->donateModel->addUserDonation($data)) {
+                    //userDonation was added to the database
+                    return true;
+                } else {
+                    //user donation was not added
+                    $data["error_msg"] = "Something went wrong. Please try again.";
+                    $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
+                }
+            } else {
+                //donation was not added to the db
+                $data["error_msg"] = "Something went wrong. Please try again.";
+                $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
+            }
+        }
+        else {
+            $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
+        }
+    }
+
+    public function all() {
+        if($_SESSION["user_admin"] != 1 || !isLoggedIn()) {
+            redirect("/home");
+            return;
+        }
+
+        $list = $this->donateModel->getAllDonations();
+        $data = [
+            "title" => "Donations",
+            "list" => $list
+        ];
+        $this->view("donate/all", $data);
+    }
+
+    public function add() {
+
+        if($_SESSION["user_admin"] != 1 || !isLoggedIn()) {
+            redirect("/home");
+            return;
+        }
+
+        $data = [
+            "title" => "Add a Donation",
+            // Include default values for form inputs
+            "donation_id" => 0,
+            "donation_type" => "",
+            "amount" => "",
+            "anonymous" => "",
+            "message" => "",
+            "recurring" => "",
+            "result" => "",
+            "firstname" => "",
+            "lastname" => "",
+            "email" => "",
+            "phoneNumber" => "",
+            "password" => "Password123",
+            "user_id" => 0,
+            "street_address_1" => "",
+            "street_address_2" => "",
+            "state" => "",
+            "city" => "",
+            "zip" => "",
+            "current_address" => 0,
+            "error" => false,
+            "error_msg" => "Something went wrong.",
+            "edit" => false
+        ];
+
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            //add the user to the database
+            $data["user_id"] = $this->saveUserInfo($data);
+
+            //add the address to the database
+            $this->addNewUserAddress($data);
+
+            if ($this->addDonation($data)) {
+
+                flash("login-success", "The donation was successfully added.", "alert alert-success fade show");
+                redirect("/donate/all");
+
+            } else {
+
+                $data["error_msg"] = "Something went wrong. Please try again.";
+                $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
+
+            }
+        }
+
+        $this->view("donate/add", $data);
+    }
+
+    public function edit($id) {
+
+        $donation = $this->donateModel->getDonationById($id);
+        if($_SESSION["user_admin"] != 1 || !isLoggedIn()) {
+            redirect("/home");
+            return;
+        }
+        $data = [
+            "title" => "Edit Donation",
+            // Include default values for form inputs
+            "donation_id" => $donation->donation_id,
+            "donation_type" => $donation->donation_type,
+            "amount" => $donation->amount,
+            "anonymous" => $donation->anonymous,
+            "message" => $donation->message,
+            "recurring" => $donation->recurring,
+            "firstname" => $donation->firstname,
+            "lastname" => $donation->lastname,
+            "email" => $donation->email,
+            "phoneNumber" => "",
+            "user_id" => $donation->user_id,
+            "street_address_1" => "",
+            "street_address_2" => "",
+            "state" => "",
+            "city" => "",
+            "zip" => "",
+            "current_address" => 0,
+            "result" => "",
+            "error" => false,
+            "error_msg" => "Something went wrong.",
+            "edit" => true
+        ];
+
+        //get address by user_id
+        $address = $this->userModel->getAddressByUserId($data);
+        if(!empty($address)) {
+            // The email and password matched
+            $data["address_id"] = $address->address_id;
+            $data["street_address_1"] = $address->street_address_1;
+            $data["street_address_2"] = $address->street_address_2;
+            $data["city"] = $address->city;
+            $data["state"] = $address->state;
+            $data["zip"] = $address->zip;
+            $data["current_address"] = $address->current_address;
+
+        }
+
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+
+            //get and validate donation type
+            $data["donation_type"] = $_POST["donation_type"];
+            if($data["donation_type"] == "") {
+                $data["error"] = true;
+                $data["error_msg"] = "Invalid Data Type";
+            }
+            //get and validate donation amount
+            //only if donation type is Money
+            if ($data["donation_type"] == "Money") {
+                if (empty($_POST["amount"]) && empty($_POST["custom_amount"])) {
+                    $data["error"] = true;
+                    $data["error_msg"] = "Please select an amount.";
+
+                } elseif (!empty($_POST["amount"])) {
+                    $data["amount"] = $_POST["amount"];
+
+                } else {
+                    $data["amount"] = $_POST["custom_amount"];
+                    if(!filter_var($data["amount"], FILTER_VALIDATE_FLOAT))  {
+                        $data["error"] = true;
+                        $data["error_msg"] = "Invalid Amount";
+                    }
+                }
+            } else {
+                $data["amount"] = null;
+            }
+
             //get and validate anonymous
             $data["anonymous"] = (!empty($_POST['anonymous'])) ? 1 : 0;
             if($data["anonymous"] == "") {
@@ -105,41 +310,21 @@ class Donate extends Controller {
                     $data["error_msg"] = "Invalid characters";
                 }
             }
-
-            //if the user isn't logged in, add them to the database
-            if (!isLoggedIn()) {
-
-                $data["user_id"] = $this->saveUserInfo($data);
-
-            }
-
-            //If the address is new/different from current, add it to the database
-            if ($data["street_address_1"] != $_POST["address1"]) {
-
-                $this->addNewUserAddress($data);
+            //get and validate donation id
+            $data["donation_id"] = $_POST["donation_id"];
+            if($data["donation_id"] == "") {
+                $data["error"] = true;
             }
 
             //this adds the donation, and outputs success message if successful
-            if (!$data["error"] && $data["user_id"] != 0) {
-                if ($this->donateModel->addNewDonation($data)) {
+            if (!$data["error"]) {
+
+                if ($this->donateModel->updateDonation($data)) {
                     //will run if the donation is added to the database
-                    if ($this->donateModel->addUserDonation($data)) {
-
-                        //userDonation was added to the database
-                        $data["result"] = '<div class="alert alert-success alert-dismissible fade show" role="alert">Thank you for your donation!
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                        </button></div>';
-                        flash("login-success", "Thank you for your donation!", "alert alert-success fade show");
-                        redirect("/donate/history");
-                    } else {
-                        //user donation was not added
-                        $data["error_msg"] = "Something went wrong. Please try again.";
-                        $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
-                    }
-
+                    flash("login-success", "The donation has been updated.", "alert alert-success fade show");
+                    redirect("/donate/all");
                 } else {
-                    //donation was not added to the db
+                    //donation was not updated to the db
                     $data["error_msg"] = "Something went wrong. Please try again.";
                     $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
                 }
@@ -147,12 +332,31 @@ class Donate extends Controller {
             else {
                 $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
             }
+        }
+        $this->view("donate/add", $data);
+    }
 
+    public function delete($id) {
 
+        if($_SESSION["user_admin"] != 1 || !isLoggedIn()) {
+            redirect("/home");
+            return;
         }
 
-        $this->view("donate/home", $data);
+        try {
+            if ($this->donateModel->deleteDonation($id)) {
+
+                flash("login-success", "The donation was deleted.", "alert alert-success fade show");
+                redirect("/donate/all");
+            }
+        } catch(PDOException $e) {
+
+            flash("post_message", "Your post could not be deleted. Try again later.", "alert alert-danger");
+            $data["error_msg"] = "Something went wrong. Please try again.";
+            $data["result"] = '<div class="alert alert-danger" role="alert">' . $data["error_msg"] . '</div>';
+        }
     }
+
 
 
     public function saveUserInfo($data) {
