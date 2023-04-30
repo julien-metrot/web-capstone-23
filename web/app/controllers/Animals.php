@@ -35,7 +35,7 @@ class Animals extends Controller
 
     public function add()
     {
-        if ($_SESSION["user_admin"] || !isLoggedIn()) {
+        if ($_SESSION["user_admin"] != 1 || !isLoggedIn()) {
             redirect("/animals/all");
             return;
         }
@@ -104,12 +104,12 @@ class Animals extends Controller
         $this->view("animals/add", $data);
     }
 
-    public function edit($animal_id) {
-        if ($_SESSION["user_admin"] || !isLoggedIn()) {
+    public function edit($id) {
+        $animal = $this->animalsModel->getAnimal($id);
+        if ($_SESSION["user_admin"] != 1 || !isLoggedIn()) {
             redirect("/animals/all");
             return;
         }
-        $animal = $this->animalsModel->getAnimal($animal_id);
         $data = [
             "title" => "Edit Animal",
             "animal_id" => $animal->animal_id,
@@ -182,7 +182,6 @@ class Animals extends Controller
                     }
                 } catch (PDOException $e) {
                     flash("update_message", "Your edit was unsuccessful. Try again later", "alert alert-danger");
-
                 }
             }
         }
@@ -190,7 +189,7 @@ class Animals extends Controller
     }
 
     public function delete($id) {
-        if ($_SESSION["user_admin"] || !isLoggedIn()) {
+        if ($_SESSION["user_admin"] != 1 || !isLoggedIn()) {
             redirect("/animals/all");
             return;
         }

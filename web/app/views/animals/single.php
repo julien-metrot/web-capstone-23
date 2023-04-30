@@ -28,6 +28,7 @@
 <div class="page container">
     <div class="row">
         <!-- page with sidebar starts -->
+        <a href="<?php echo URLROOT ?>/animals/all" class="btn btn-primary mb-4"><i class="fa fa-arrow-left"></i> View All Animals</a>
         <div class="col-lg-9 page-with-sidebar">
             <div class="row">
                 <?php if (isset($data["animals"]) && is_object($data["animals"])): ?>

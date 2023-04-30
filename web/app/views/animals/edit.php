@@ -22,7 +22,7 @@
         <?php flash("update_message"); ?>
         <div class="card card-body bg-light">
             <h2>Edit Animal</h2>
-            <form action="<?php echo URLROOT; ?>/animals/all/<?php echo $data["animal_id"] ?>" method="POST">
+            <form action="<?php echo URLROOT; ?>/animals/edit/<?php echo $data['animal_id']; ?>" method="POST">
                 <div class="form-group mb-3">
                     <label for="name">Animal Name: <sup>*</sup></label>
                     <input type="text" name="name" id="name"
