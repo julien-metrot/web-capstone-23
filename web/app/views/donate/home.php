@@ -29,7 +29,10 @@
     <!-- ==== Page Content ==== -->
     <div class="page">
         <div class="container-fluid block-padding">
+
             <div class="container" id="donate_container">
+                <?php if(!empty($_SESSION["user_admin"]) && $_SESSION["user_admin"] == 1) echo '<a href="all/" 
+                class="btn btn-primary mb-4" style="margin-top: -25px;">View All Donations</a>' ?>
                 <div id="alert-msg"><?php echo $data["result"]; ?></div>
                 <h3 class="res-margin">Make a Donation</h3>
                 <!-- divider -->
