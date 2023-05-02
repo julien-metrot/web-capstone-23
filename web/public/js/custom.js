@@ -281,6 +281,12 @@ jQuery(function($) {
 				   $("#custom_amount input").prop('required', false);
 			   }
 		   });
+		   //On form submit, if an amount button is checked, make custom amount not required
+		   $("#addDonation").click(function () {
+			   if ($('#donate_amount input').is(':checked')) {
+				   $("#custom_amount input").prop('required', false);
+			   }
+		   });
 
 		   //Upon load (pre-population), if money is not selected, remove the required attribute for the amount
 		   if ($('#money_type').is(':checked')) {
