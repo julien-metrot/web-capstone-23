@@ -45,12 +45,15 @@
         <!-- /caption-adoption -->
     </div>
 <div class="container mx-auto text-center">
-<?php //if ($data["user"]->admin == 1): ?>
-    <a href="<?php echo URLROOT ?>/adopt/approve/<?php echo $data["application"]->application_id ?>"
+
+<?php if ($data["application"]->application_status == "Pending" || $data["application"]->application_status == "Denied"): ?>
+    <a href="<?php echo URLROOT; ?>/adopt/approve/<?php echo $data["application"]->application_id; ?>"
        class="btn btn-dark">Approve</a>
+<?php endif ?>
+    <?php if ($data["application"]->application_status == "Approved" || $data["application"]->application_status == "Pending"): ?>
     <a href="<?php echo URLROOT; ?>/adopt/deny/<?php echo $data["application"]->application_id; ?>"
        class="btn btn-danger float-end">Deny</a>
-<?php //endif; ?>
+<?php endif ?>
 </div>
     <!-- /adopt-card -->
     <!-- /row -->
