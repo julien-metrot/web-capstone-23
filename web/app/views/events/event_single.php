@@ -30,7 +30,9 @@
 <!-- ==== Page Content ==== -->
 <div class="page">
     <div class="container">
-        <?php foreach($data["event"] as $event): ?>
+        <?php foreach($data["event"] as $event):
+        $event_id = $event -> event_id;
+        ?>
         <h2><?php echo $event->title ?></h2>
         <div class="row mt-4">
             <!-- event INFO -->
@@ -49,8 +51,8 @@
                 </p>
                 <?php if (!empty($_SESSION["user_id"])): ?>
                     <hr>
-                    <a href="<?php echo URLROOT?>/event/edit/<?php echo $data["event"]->event; ?>" class="btn btn-dark">Edit Event</a>
-                    <a href="<?php echo URLROOT?>/event/delete/<?php echo $data["event"]->event; ?>" class="btn btn-danger float-end">Delete Event</a>
+                    <a href="<?php echo URLROOT?>/events/edit/<?php echo $event_id ?>" class="btn btn-primary float-end">Edit Event</a>
+                    <a href="<?php echo URLROOT?>/events/delete/<?php echo $event_id ?>" class="btn btn-danger float-end">Delete Event</a>
                 <?php endif; ?>
                 <!-- Button -->
                 <a href="<?php echo URLROOT; ?>/contact/info" class="btn btn-primary mt-2">Contact us</a>
