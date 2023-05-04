@@ -9,7 +9,7 @@
          data-top-bottom="background-size: 110%;">
         <div class="container">
             <div class="jumbo-heading" data-aos="fade-up">
-                <h1>Adoption</h1>
+                <h1>Adoption Page</h1>
                 <!-- Breadcrumbs -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -54,9 +54,11 @@
                     <?php flash("animal_message");?>
                     <?php flash("update_message"); ?>
                     <?php flash("delete_message"); ?>
+                    <?php  if(!empty($_SESSION["user_admin"]) && $_SESSION["user_admin"] == 1): ?>
                     <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animals/add">
                         <i class="fa-solid fa-pencil"></i> Add Animal
                     </a>
+                    <?php endif; ?>
                 </div>
             </div>
         <!-- centered Gallery navigation -->
@@ -148,12 +150,14 @@
                                     <!-- button-->
                                     <a href="<?php echo URLROOT; ?>/animals/single/<?php echo $animal->animal_id ?>" class="btn btn-primary">More
                                         Info</a><br><br>
+                                    <?php  if(!empty($_SESSION["user_admin"]) && $_SESSION["user_admin"] == 1 ): ?>
                                         <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animals/edit/<?php echo $animal->animal_id; ?>">
                                             <i class="fa-solid fa-pencil"></i> Edit Animal
                                         </a>
                                     <a class="btn btn-primary float-end" href="<?php echo URLROOT; ?>/animals/delete/<?php echo $animal->animal_id; ?>">
                                         <i class="fa-solid fa-pencil"></i> Delete Animal
                                     </a>
+                                    <?php endif ?>
                                 </div>
                                 <!-- /text-center -->
                             </div>

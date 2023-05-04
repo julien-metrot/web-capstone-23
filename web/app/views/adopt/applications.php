@@ -30,6 +30,8 @@
 
 <!-- ==== Page Content ==== -->
 <div class="page container">
+    <?php flash("application_message"); ?>
+
     <div class="row">
         <div class="col-lg-12">
             <h2>All Applications</h2>
