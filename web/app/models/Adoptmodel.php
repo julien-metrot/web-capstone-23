@@ -71,24 +71,24 @@ class Adoptmodel
         return $this->db->single();
     }
 
-    public function apply($apply) {
+    public function apply($data) {
         $this->db->query("INSERT INTO application(employer_name, has_children, home_status, landlord_name, landlord_phone, current_pets) VALUES(:employer_name, :has_children, :home_status, :landlord_name, :landlord_phone, :current_pets)");
-        $this->db->bind(":employer_name", $apply["employerName"]);
-        $this->db->bind(":has_children", $apply["hasChildren"]);
-        $this->db->bind(":home_status", $apply["homeStatus"]);
-        $this->db->bind(":landlord_name", $apply["landlordName"]);
-        $this->db->bind(":landlord_phone", $apply["landlordName"]);
-        $this->db->bind(":current_pets", $apply["currentPets"]);
+        $this->db->bind(":employer_name", $data["employerName"]);
+        $this->db->bind(":has_children", $data["hasChildren"]);
+        $this->db->bind(":home_status", $data["homeStatus"]);
+        $this->db->bind(":landlord_name", $data["landlordName"]);
+        $this->db->bind(":landlord_phone", $data["landlordName"]);
+        $this->db->bind(":current_pets", $data["currentPets"]);
         return $this->db->execute(); // will return true or false if the database processed the query
     }
 
-    public function approve() {
-        $this->db->query("UPDATE application
-        SET application_status = 'Approved'
-        WHERE application.user_id = user.user_id");
+    public function approveApplication($application_id) {
+        $this->db->query("UPDATE application SET application_status = 'Approved' WHERE application_id = :application_id");
+        $this->db->bind(":application_id", $application_id );
+        return $this->db->execute();
     }
 
-    public function deny() {
+    public function denyApplication() {
         $this->db->query("UPDATE application
         SET application_status = 'Denied'
         WHERE application.user_id = user.user_id");
