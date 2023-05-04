@@ -22,7 +22,7 @@
         <?php flash("update_message"); ?>
         <div class="card card-body bg-light">
             <h2>Edit Animal</h2>
-            <form action="<?php echo URLROOT; ?>/animals/all/<?php echo $data["animal_id"] ?>" method="POST">
+            <form action="<?php echo URLROOT; ?>/animals/edit/<?php echo $data['animal_id']; ?>" method="POST">
                 <div class="form-group mb-3">
                     <label for="name">Animal Name: <sup>*</sup></label>
                     <input type="text" name="name" id="name"
@@ -72,7 +72,7 @@
                     <span class="invalid-feedback"><?php echo $data["description_error"]; ?></span>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="special_needs">Special Needs: <sup>*</sup></label>
+                    <label for="special_needs">Special Needs: </label>
                     <input type="text" name="special_needs" id="special_needs"
                            class="form-control form-control-lg <?php echo (!empty($data["special_needs_error"])) ? "is-invalid" : ""; ?>"
                            value="<?php echo $data["special_needs"]; ?>">
