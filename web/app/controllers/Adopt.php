@@ -9,22 +9,31 @@ class Adopt extends Controller
 
     public function applications()
     {
-        $applications = $this->adoptModel->getAllApplications();
-        $data = [
-            "title" => "All Applications",
-            "applications" => $applications
-        ];
-        $this->view("adopt/applications", $data);
+        if (!empty($_SESSION["user_admin"]) && $_SESSION["user_admin"] == 1) {
+
+            $applications = $this->adoptModel->getAllApplications();
+            $data = [
+                "title" => "All Applications",
+                "applications" => $applications
+            ];
+            $this->view("adopt/applications", $data);
+        } else {
+            redirect("/page/home");
+        }
     }
 
     public function application_single($application_id)
     {
+        if (!empty($_SESSION["user_admin"]) && $_SESSION["user_admin"] == 1) {
         $application = $this->adoptModel->getApplicantInfo($application_id);
         $data = [
             "title" => "Single Application",
             "application" => $application,
         ];
         $this->view("adopt/application_single", $data);
+        } else {
+            redirect("/page/home");
+        }
     }
 
     public function showPending()
@@ -55,6 +64,30 @@ class Adopt extends Controller
             "applications" => $applications
         ];
         $this->view("adopt/applications", $data);
+    }
+
+    public function approve($application_id) {
+        $application = $this->adoptModel->getApplicantInfo($application_id);
+        try {
+            if ($this->adoptModel->approveApplication($application_id)) {
+                flash("application_message", "Your application was approved");
+                redirect("/adopt/applications");
+            }
+        } catch (PDOException $e) {
+            flash("application_message", "Your application could not be approved. Try again later.");
+        }
+    }
+
+    public function deny($application_id) {
+        $application = $this->adoptModel->getApplicantInfo($application_id);
+        try {
+            if ($this->adoptModel->denyApplication($application_id)) {
+                flash("application_message", "Your application was denied");
+                redirect("/adopt/applications");
+            }
+        } catch (PDOException $e) {
+            flash("application_message", "Your application could not be denied. Try again later.");
+        }
     }
 
     public function apply()

@@ -20,6 +20,7 @@
     <!-- /jumbotron -->
     <!-- ==== Page Content ==== -->
     <div class="page container">
+        <a href="<?php echo URLROOT ?>/animals/all" class="btn btn-primary mb-4"><i class="fa fa-arrow-left"></i> View All Animals</a>
         <div class="card card-body bg-light">
             <h2>Add Animal</h2>
             <form action="<?php echo URLROOT; ?>/animals/add" method="POST">
