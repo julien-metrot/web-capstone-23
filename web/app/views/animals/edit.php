@@ -72,7 +72,7 @@
                     <span class="invalid-feedback"><?php echo $data["description_error"]; ?></span>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="special_needs">Special Needs: <sup>*</sup></label>
+                    <label for="special_needs">Special Needs: </label>
                     <input type="text" name="special_needs" id="special_needs"
                            class="form-control form-control-lg <?php echo (!empty($data["special_needs_error"])) ? "is-invalid" : ""; ?>"
                            value="<?php echo $data["special_needs"]; ?>">
