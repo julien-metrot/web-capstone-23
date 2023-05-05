@@ -26,7 +26,7 @@
                         <a class="nav-link" href="<?php echo URLROOT; ?>/members/info">Team</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo URLROOT; ?>/donate/donate">Donate</a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/donate/home">Donate</a>
                     </li>
 
                     <?php  if(!empty($_SESSION["user_admin"]) && $_SESSION["user_admin"] == 1 ): ?>

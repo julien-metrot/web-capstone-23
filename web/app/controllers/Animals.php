@@ -25,7 +25,8 @@ class Animals extends Controller
             $data = [
                 "title" => "Animals | More Info",
                 "animals" => $animals,
-                "events" => $events
+                "events" => $events,
+                "animal_id" => $id
             ];
             $this->view("animals/single", $data);
         } else {

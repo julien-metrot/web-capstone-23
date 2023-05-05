@@ -1,6 +1,9 @@
 <?php
  class Events extends Controller {
      public function __construct() {
+         if(!isLoggedIn()) {
+             redirect("/user/login");
+         }
          $this->eventsModel = $this->model("Eventsmodel");
      }
      public function upcoming() {

@@ -31,6 +31,7 @@
 <!-- ==== Page Content ==== -->
 <div class="page container">
     <?php flash("application_message"); ?>
+    <?php flash("edit_message"); ?>
 
     <div class="row">
         <div class="col-lg-12">
@@ -89,6 +90,8 @@
                             <div class="">
                                 <!-- button-->
                                 <a href="<?php echo URLROOT; ?>/adopt/application_single/<?php echo $applications->application_id?>" class="btn btn-primary">More Info</a>
+                                <a style="padding: 10px 35px;" href="<?php echo URLROOT; ?>/adopt/edit/<?php echo $applications->application_id?>" class="btn btn-outline-secondary">Edit</a>
+                                <a style="padding: 10px 35px;" href="<?php echo URLROOT; ?>/adopt/delete/<?php echo $applications->application_id?>" class="btn btn-outline-danger">Delete</a>
                             </div>
                             <!-- /text-center -->
                         </div>

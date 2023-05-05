@@ -21,10 +21,11 @@
         <!-- /container -->
     </div>
     <!-- /jumbotron -->
-<?php flash("login-success"); ?><?php flash("post_message"); ?>
+<?php flash("login-success"); ?>
     <div class="container">
         <a href="<?php echo URLROOT ?>/events/upcoming" class="btn btn-primary mb-4"><i class="fa fa-arrow-left"></i> View all Events</a>
         <div class="card card-body bg-light">
+            <?php flash("post_message"); ?>
         </div>
             <h2>Add New Event</h2>
             <form action="<?php echo URLROOT; ?>/events/add" method="POST">
@@ -54,7 +55,7 @@
 
                 <div class="form-group mb-3">
                     <label for="event_date">Event Date: <sup>*</sup></label>
-                    <textarea name="event_date" id="event_date" class="form-control form-control-lg <?php echo (!empty($data["event_date_error"])) ? "is-invalid" : ""; ?>"><?php echo $data["event_date"]; ?></textarea>
+                    <input type="datetime-local" name="event_date" id="event_date" class="form-control form-control-lg <?php echo (!empty($data["event_date_error"])) ? "is-invalid" : ""; ?>"><?php echo $data["event_date"]; ?></input>
                     <span class="invalid-feedback"><?php echo $data["event_date_error"]; ?></span>
                 </div>
 

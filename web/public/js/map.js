@@ -4,9 +4,9 @@
 	var mapcanvas = document.getElementById("map-canvas");
 	if(mapcanvas){
 		//Open street  Map
-		var coord = [41.914680, -91.654530]; // <--- coordinates here
+		var coord = [41.909766, -91.650816]; // <--- coordinates here
 
-		var map = L.map('map-canvas', { scrollWheelZoom:false}).setView(coord, 19);
+		var map = L.map('map-canvas', { scrollWheelZoom:false}).setView(coord, 18);
 
 		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 22,
@@ -15,8 +15,8 @@
 
 		// custom icon
 		var customIcon = L.icon({
-		iconUrl: 'img/mapmarker.png',
-		iconSize:     [64, 64], // size of the icon
+		iconUrl: '../images/logo/updated-favicon-resized.png',
+		iconSize:     [54, 54], // size of the icon
 		iconAnchor:   [32, 63] // point of the icon which will correspond to marker's location
 		});
 

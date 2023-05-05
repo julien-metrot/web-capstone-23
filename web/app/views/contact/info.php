@@ -37,7 +37,7 @@
 <!--                    <p class="mt-2">If you're interested in adopting or fostering a pet, contact us here or fill out our application.</p>-->
                     <!-- contact icons-->
                     <ul class="list-unstyled mt-3 list-contact colored-icons">
-                        <li><i class="fa fa-envelope margin-icon"></i><a href="mailto:email@yoursite.com"><?php echo EMAIL_ADDRESS; ?></a></li>
+                        <li><i class="fa fa-envelope margin-icon"></i><a href="mailto:staff@pawfectadoption.com"><?php echo EMAIL_ADDRESS; ?></a></li>
                         <li><i class="fa fa-phone margin-icon"></i><?php echo PHONE; ?></li>
                         <li><i class="fa fa-map-marker margin-icon"></i><?php echo ADDRESS; ?></li>
                     </ul>

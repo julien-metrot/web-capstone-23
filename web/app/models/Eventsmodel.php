@@ -50,13 +50,12 @@ class Eventsmodel
     }
 
     public function updateEvent($data){
-        $this->db->query("UPDATE events SET event_id = :event_id, title = :title, description = :description, name = :name, address = :address, date = :date, LAST_INSERT_ID() WHERE event_id = :event_id");
+        $this->db->query("UPDATE events SET title = :title, location_id = :location_id, description = :description, date = :date WHERE event_id = :event_id");
         $this->db->bind(":event_id", $data["event_id"]);
         $this->db->bind(":title", $data["event_title"]);
         $this->db->bind(":date", $data["event_date"]);
+        $this->db->bind(":location_id", $data["location_address"]);
         $this->db->bind(":description", $data["event_description"]);
-        $this->db->bind(":name", $data["location_name"]);
-        $this->db->bind(":address", $data["location_address"]);
         return $this->db->execute();
     }
 

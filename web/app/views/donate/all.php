@@ -52,7 +52,7 @@
                 <tbody>
                 <?php foreach($data["list"] as $list):?>
                 <tr>
-                    <th scope="row"><?php echo $list->donation_date ?></th>
+                    <th scope="row"><?php echo formatDate($list->donation_date) ?></th>
                     <td><?php echo $list->donation_type ?></td>
                     <td><?php echo $list->amount ?></td>
                     <td><?php echo $list->firstname . " " . $list->lastname ?></td>

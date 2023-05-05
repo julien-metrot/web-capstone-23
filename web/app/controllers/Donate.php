@@ -357,8 +357,6 @@ class Donate extends Controller {
         }
     }
 
-
-
     public function saveUserInfo($data) {
 
         //get and validate first name
