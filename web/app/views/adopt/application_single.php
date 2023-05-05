@@ -15,7 +15,7 @@
                 <!-- Breadcrumbs -->
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="adoption.html">Apply</a></li>
+                        <li class="breadcrumb-item"><a href="applications.html">Apply</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Application Details</li>
                     </ol>
                 </nav>
@@ -23,6 +23,7 @@
         </div>
     </div>
     <div class="page container">
+        <?php flash("application_message"); ?>
         <h2 class="mt-4"><?php echo $data["application"]->firstname . " " . $data["application"]->lastname; ?>'s Application</h2>
         <div class="row bg-light card mt-4">
             <ul class="list-unstyled mt-3">
@@ -44,6 +45,7 @@
         <!-- /caption-adoption -->
     </div>
 <div class="container mx-auto text-center">
+
 <?php if ($data["application"]->application_status == "Pending" || $data["application"]->application_status == "Denied"): ?>
     <a href="<?php echo URLROOT; ?>/adopt/approve/<?php echo $data["application"]->application_id; ?>"
        class="btn btn-dark">Approve</a>

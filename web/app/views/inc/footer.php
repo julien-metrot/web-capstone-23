@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 text-center ">
-                <img src="<?php echo URLROOT ?>/images/logo/pawfect-adoption.png"  class="logo-footer img-fluid pb-4" alt=""/>
+                <img src="<?php echo URLROOT ?>/images/logo/updated-logo2.png"  class="logo-footer img-fluid pb-4" alt=""/>
                 <!-- Start Social Links -->
                 <ul class="social-list text-center list-inline">
                     <li class="list-inline-item"><a title="Github" href="<?php echo GITHUB_URL?>" target="_blank"><i class="fab fa-github"></i></a></li>
