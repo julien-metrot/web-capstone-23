@@ -55,7 +55,7 @@
 
             <div class="form-group mb-3">
                 <label for="event_date">Event Date: <sup>*</sup></label>
-                <textarea name="event_date" id="event_date" class="form-control form-control-lg <?php echo (!empty($data["event_date_error"])) ? "is-invalid" : ""; ?>"><?php echo $data["event_date"]; ?></textarea>
+                <input type="datetime-local" name="event_date" id="event_date" class="form-control form-control-lg <?php echo (!empty($data["event_date_error"])) ? "is-invalid" : ""; ?>"><?php echo $data["event_date"]; ?></input>
                 <span class="invalid-feedback"><?php echo $data["event_date_error"]; ?></span>
             </div>
             <input type="submit" value="Submit" class="btn btn-secondary">
