@@ -16,7 +16,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="index.html">Home</a></li>
                         <li class="breadcrumb-item"><a href="<?php echo URLROOT; ?>/donate/all/">All Donations</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Add Donation</li>
+                        <li class="breadcrumb-item active" aria-current="page">Donation</li>
                     </ol>
                 </nav>
                 <!-- /breadcrumb -->

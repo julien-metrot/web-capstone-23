@@ -1496,8 +1496,7 @@ Last change:12th february 2022
 
  /* Added By Katelyn */
 #contact_form .form-control {
-    border: 2px solid;
-    color: #a5a5a5;
+    border: 2px solid #a5a5a5 !important;
 }
 #contact_form .form-control:focus {
     border: 2px solid;
@@ -1524,6 +1523,9 @@ Last change:12th february 2022
 #custom_amount input.form-control {
     border-left: 0px;
 }
+#donate_amount.input-group {
+    flex-wrap: nowrap;
+}
 
 #donate_form label.form-check-label, #add_donation label.form-check-label {
     margin-top: 0px;
@@ -1532,13 +1534,13 @@ Last change:12th february 2022
     font-family:'Montserrat', sans-serif;
     transition: all 0.2s ease-in-out;
     /*margin-bottom: 4px;*/
-    margin-right: 24px;
+    margin-right: 25px;
     margin-top: 0px;
     border: 2px solid #007bff;
     border-radius: 5px!important;
     font-size: 16px;
     color: #000!important;
-    padding: 8px 42px;
+    padding: 8px 35px;
     height: 45px;
 }
 #donate_form label.btn-amount:hover, #add_donation label.btn-amount:hover {
@@ -2550,6 +2552,9 @@ Last change:12th february 2022
     .top-bar {
          display:none!important;
     }
+     #donate_amount.input-group {
+         flex-wrap: wrap;
+     }
 }
 
 /* Medium devices (991px)  */

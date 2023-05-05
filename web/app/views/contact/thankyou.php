@@ -17,7 +17,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item" aria-current="page">Contact</li>
+                    <li class="breadcrumb-item"><a href="<?php echo URLROOT; ?>/contact/info/">Contact</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Thank You</li>
                 </ol>
             </nav>
@@ -36,7 +36,6 @@
                 <div class="col-lg-5">
                     <h2>Get in Touch</h2>
                     <span class="h7 mt-0">We offer adoption and fostering services for cats and dogs. Reach out to us if you have any questions.</span>
-                    <!--                    <p class="mt-2">If you're interested in adopting or fostering a pet, contact us here or fill out our application.</p>-->
                     <!-- contact icons-->
                     <ul class="list-unstyled mt-3 list-contact colored-icons">
                         <li><i class="fa fa-envelope margin-icon"></i><?php echo EMAIL_ADDRESS; ?></li>
