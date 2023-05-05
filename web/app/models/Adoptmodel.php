@@ -88,10 +88,10 @@ class Adoptmodel
         return $this->db->execute();
     }
 
-    public function denyApplication() {
-        $this->db->query("UPDATE application
-        SET application_status = 'Denied'
-        WHERE application.user_id = user.user_id");
+    public function denyApplication($application_id) {
+        $this->db->query("UPDATE application SET application_status = 'Denied' WHERE application_id = :application_id");
+        $this->db->bind(":application_id", $application_id );
+        return $this->db->execute();
     }
 
 }
