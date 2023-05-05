@@ -13,12 +13,12 @@
      data-top-bottom="background-size: 110%;">
     <div class="container">
         <div class="jumbo-heading" data-aos="fade-up">
-            <h1>Applications</h1>
+            <h1>Edit Application</h1>
             <!-- Breadcrumbs -->
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Apply</li>
+                    <li class="breadcrumb-item"><a href="index.html">Applications</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Edit</li>
                 </ol>
             </nav>
         </div>
@@ -28,33 +28,15 @@
 
 <!-- ==== Page Content ==== -->
 <div class="page container">
-    <h2 class="text-center">Adoption Application </h2>
-    <p class="lead text-center mb-4">Please fill out the form below to adopt a pet.</p>
+    <!--    <p class="lead text-center mb-4">Please fill out the form below to adopt a pet.</p>-->
 
 
     <div class="row mx-auto">
         <div class="col-md-12 mx-auto">
-            <!--        TODO add flash -->
+            <?php flash("edit_message"); ?>
             <div class="card card-body bg-light">
-                <form action="<?php echo URLROOT; ?>/adopt/apply/<?php echo $data['animal_id']?>" method="POST">
+                <form action="<?php echo URLROOT; ?>/adopt/edit/<?php echo $data["application_id"] ?>" method="POST">
                     <h4>Applicant Information</h4>
-                    <div class="form-group mb-2" id="application-form">
-                        <label for="fullName">Full Name</label>
-                        <input class="form-control <?php echo !empty($data["fullName_error"]) ? "is-invalid" : "" ?>"
-                               type="text" id="fullName" name="fullName" value="<?php echo $data["fullName"] ?>">
-                        <?php if (!empty($data["fullName_error"])): ?>
-                            <span class="invalid-feedback"><?php echo $data["fullName_error"] ?></span>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="form-group mb-2">
-                        <label for="email">Email Address</label>
-                        <input class="form-control <?php echo !empty($data["email_error"]) ? "is-invalid" : "" ?>"
-                               type="text" id="email" name="email" value="<?php echo $data["email"] ?>">
-                        <?php if (!empty($data["email_error"])): ?>
-                            <span class="invalid-feedback"><?php echo $data["email_error"] ?></span>
-                        <?php endif; ?>
-                    </div>
 
                     <div class="col-md-12 mt-4 form-group">
                         <label>Do you currently have pets?</label><br>
@@ -62,9 +44,9 @@
                             <input class="form-check-input <?php echo !empty($data["currentPets_error"]) ? "is-invalid" : "" ?>"
                                    type="radio" id="currentPets" value="1" name="currentPets">
                             <label class="form-check-label" for="currentPets">Yes</label>
-<!--                            --><?php //if (!empty($data["currentPets_error"])): ?>
-<!--                                <span class="invalid-feedback">--><?php //echo $data["currentPets_error"] ?><!--</span>-->
-<!--                            --><?php //endif; ?>
+                            <?php if (!empty($data["currentPets_error"])): ?>
+                                <span class="invalid-feedback"><?php echo $data["currentPets_error"] ?></span>
+                            <?php endif; ?>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" checked
@@ -132,49 +114,16 @@
                         <?php endif; ?>
                     </div>
                     <hr class="mt-4 mb-4">
-                    <h4>Reference Information</h4>
+                    <h4>Animal Information</h4>
                     <div class="col-md-12 form-group">
-                        <label for="referenceName">Reference Name</label>
-                        <input type="text" name="referenceName"
-                               class="form-control <?php echo !empty($data["referenceName_error"]) ? "is-invalid" : "" ?>"
-                               value="<?php echo $data["referenceName"] ?>" id="referenceName">
-                        <?php if (!empty($data["referenceName_error"])): ?>
-                            <span class="invalid-feedback"><?php echo $data["referenceName_error"] ?></span>
-                        <?php endif; ?>
+                        <label>Name of pet interested in:</label>
+                        <input type="text" name="animal-interested" class="form-control input-field">
                     </div>
-
-                    <div class="col-md-6 form-group">
-                        <label for="referencePhone">Reference Phone Number</label>
-                        <input type="text" name="referencePhone"
-                               class="form-control input-field <?php echo !empty($data["referencePhone_error"]) ? "is-invalid" : "" ?>"
-                               value="<?php echo $data["referencePhone"] ?>">
-                        <?php if (!empty($data["referencePhone_error"])): ?>
-                            <span class="invalid-feedback"><?php echo $data["referencePhone_error"] ?></span>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="col-md-6 form-group">
-                        <label>Reference Relationship</label>
-                        <input type="text" name="referenceRelationship"
-                               class="form-control input-field <?php echo !empty($data["referenceRelationship_error"]) ? "is-invalid" : "" ?>"
-                               value="<?php echo $data["referenceRelationship"] ?>">
-                        <?php if (!empty($data["referenceRelationship_error"])): ?>
-                            <span class="invalid-feedback"><?php echo $data["referenceRelationship_error"] ?></span>
-                        <?php endif; ?>
-                    </div>
-
+                    <input type="submit" class="btn btn-primary" value="Edit Application">
+                </form>
             </div>
-            <hr class="mt-4 mb-4">
-            <h4>Animal Information</h4>
-            <div class="col-md-12 form-group">
-                <label>Name of pet you are interested in:</label>
-                <input type="text" name="animal-interested" class="form-control input-field" value="<?php echo $data['animalInterested']?>">
-            </div>
-            <input type="submit" class="btn btn-primary" value="Submit Application">
-            </form>
         </div>
     </div>
-</div>
 </div>
 <!-- /page -->
 
