@@ -18,6 +18,7 @@
                 <div class="ls-l header-wrapper" data-ls="offsetyin:150; durationin:700; delayin:200; easingin:easeOutQuint; rotatexin:20; scalexin:1.4; offsetyout:600; durationout:400; parallax:true; parallaxlevel:2;">
                     <div class="header-text full-width text-light">
                         <?php flash("login-success"); ?>
+                        <?php flash("application_success"); ?>
                         <h1>Welcome to <span><?php echo SITENAME; ?></span></h1>
                         <!--the div below is hidden on small screens  -->
                         <div class="hidden-small">
