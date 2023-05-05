@@ -164,7 +164,7 @@
                 <!-- /accordion -->
                 <!-- Button -->
                 <div class="text-center">
-                    <a href="<?php echo URLROOT; ?>/adopt/applications" class="btn btn btn-secondary mt-4">Adopt me</a>
+                    <a href="<?php echo URLROOT; ?>/adopt/apply/<?php echo $data['animal_id']?>" class="btn btn btn-secondary mt-4">Adopt me</a>
                     <a href="<?php echo URLROOT; ?>/animals/all" class="btn btn btn-primary mt-4 ml-2">Go back to
                         adoption gallery</a>
                 </div>
