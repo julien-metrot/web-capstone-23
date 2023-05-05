@@ -93,5 +93,4 @@ class Adoptmodel
         $this->db->bind(":application_id", $application_id );
         return $this->db->execute();
     }
-
 }
