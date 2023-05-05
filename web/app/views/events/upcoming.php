@@ -36,9 +36,9 @@
     </div>
     <div class="page container">
         <div class="row">
+            <?php flash("post_message"); ?>
             <!-- page  starts -->
             <div class="col-lg-12">
-                <?php flash("post_message"); ?>
                 <h2>Adoption Events</h2>
                 <span class="h7 mt-0">Adoption is an act of love, join one of our events and find your new best friend </span>
                 <hr class="small-divider left">
