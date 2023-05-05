@@ -7,9 +7,10 @@ function sanitize($str) {
     return htmlspecialchars(trim($str));
 }
 
-function formatDate($date) {
+function formatDate($date)
+{
     return date("m-d-Y", strtotime($date));
-
+}
 
 function getdateFormat($date) {
     $date_array = explode(" ", $date);
@@ -69,8 +70,4 @@ function excerpt($text, $phrase, $radius = 100, $ending = "...") {
     }
 
     return $excerpt;
-}
-
-function sanitize($str) {
-    return htmlspecialchars(trim($str));
 }
