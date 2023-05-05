@@ -54,7 +54,7 @@ class Eventsmodel
         $this->db->bind(":event_id", $data["event_id"]);
         $this->db->bind(":title", $data["event_title"]);
         $this->db->bind(":date", $data["event_date"]);
-        $this->db->bind(":location_id", $data["location_address"]);
+        $this->db->bind(":location_id", $data["location_name"]);
         $this->db->bind(":description", $data["event_description"]);
         return $this->db->execute();
     }
