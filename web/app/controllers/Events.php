@@ -20,7 +20,6 @@
          ];
          $this->view("events/event_single", $data);
      }
-
      public function add(){
          if(!isLoggedIn()) {
              redirect("/user/login");

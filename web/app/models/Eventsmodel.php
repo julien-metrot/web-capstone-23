@@ -29,7 +29,6 @@ class Eventsmodel
         return $this->db->single();
     }
 
-
     public function addEvent($data)
     {
         $this->db->query(
