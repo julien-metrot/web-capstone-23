@@ -1,14 +1,10 @@
 <?php
  class Events extends Controller {
      public function __construct() {
-         if(!isLoggedIn()) {
-             redirect("/user/login");
-         }
          $this->eventsModel = $this->model("Eventsmodel");
      }
      public function upcoming() {
          $events = $this->eventsModel->getAllEvents();
-
          $data = [
              "title" => "Upcoming events",
              "events" => $events,
@@ -24,7 +20,6 @@
          ];
          $this->view("events/event_single", $data);
      }
-
      public function add(){
          if(!isLoggedIn()) {
              redirect("/user/login");
@@ -86,8 +81,6 @@
 
      public function edit($id) {
          $event = $this->eventsModel->getEventById($id);
-//         echo "<pre>". print_r($event, 1) . "</pre>";
-//         die();
          if(!isLoggedIn()) {
              redirect("/user/login");
          }
